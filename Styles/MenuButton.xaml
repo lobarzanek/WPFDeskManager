@@ -1,0 +1,109 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="BtnStyle"
+           TargetType="RadioButton">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0,5,0,0" />
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border
+                            x:Name="borderBg"
+                            Height="70"
+                            Width="260"
+                            BorderThickness="0">
+
+                        <Border.Background>
+                            <SolidColorBrush 
+                                x:Name="borderBgColor"
+                                Color="{StaticResource ButtonBlueColor}" />
+                        </Border.Background>
+
+                        <Grid>
+
+                            <Border x:Name="ActiveBar"
+                                    Height="40"
+                                    Width="4"
+                                    Margin="10,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center" 
+                                    Visibility="Collapsed"
+                                    CornerRadius="2">
+                                <Border.Background>
+                                    <SolidColorBrush 
+                                        Color="{StaticResource ActiveBarColor}" />
+                                </Border.Background>
+                            </Border>
+
+                            <ContentPresenter />
+
+                        </Grid>
+                    </Border>
+                    
+                    
+                    
+                    <!--#region Triggers-->
+
+                    <ControlTemplate.Triggers>                        
+                    
+
+                        <EventTrigger RoutedEvent="Border.MouseEnter"
+                                      SourceName="borderBg">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="borderBgColor"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource ButtonBlueColor}"
+                                                    To="{StaticResource ButtonBlueHoverColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Border.MouseLeave"
+                                      SourceName="borderBg">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="borderBgColor"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource ButtonBlueHoverColor}"
+                                                    To="{StaticResource ButtonBlueColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>                      
+                     
+
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            
+                            <Setter Property="Visibility"
+                                    TargetName="ActiveBar"
+                                    Value="Visible"/>
+
+                        </Trigger>
+                        
+                                                
+                    </ControlTemplate.Triggers>
+                    
+                    <!--#endregion-->
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,93 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ShowButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="5" />
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                            x:Name="ShowButtonBorder"
+                            Height="20"
+                            Width="20"
+                            Padding="1.5"
+                            Cursor="Hand"
+                            BorderThickness="2"
+                            >
+
+                        <Border.Background>
+                            <SolidColorBrush 
+                                x:Name="ShowButtonBG"
+                                Color="Transparent" />
+                        </Border.Background>
+                        <Border.BorderBrush>
+                            <SolidColorBrush 
+                                Color="{StaticResource ShowButtonColor}" />
+                        </Border.BorderBrush>
+                        <Border.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </Border.Resources>
+
+                        <Image Source="/Assets/ShowButton.png" Stretch="Fill"></Image>
+
+                    </Border>
+
+                    <!--#region Triggers-->
+
+                    <ControlTemplate.Triggers>
+
+
+                        <EventTrigger RoutedEvent="Border.MouseEnter"
+                                      SourceName="ShowButtonBorder">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="ShowButtonBG"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="Transparent"
+                                                    To="{StaticResource ShowButtonHoverColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Border.MouseLeave"
+                                      SourceName="ShowButtonBorder">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="ShowButtonBG"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource ShowButtonHoverColor}"
+                                                    To="Transparent"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                    <!--#endregion-->
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>

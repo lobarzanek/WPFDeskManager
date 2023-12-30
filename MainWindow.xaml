@@ -1,0 +1,119 @@
+﻿<Window x:Class="WPFDeskManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Menu="clr-namespace:WPFDeskManager.Utilities" 
+        xmlns:VM="clr-namespace:WPFDeskManager.ViewModels"
+        mc:Ignorable="d"
+        Title="Desk Manager" 
+        Height="720" 
+        Width="1080"   
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanMinimize"
+        >
+
+    <!--#region Data Context-->
+
+    <Window.DataContext>
+        <VM:NavigationVM/>
+    </Window.DataContext>
+    
+    <!--#endregion-->
+    
+    <Grid>
+        
+
+        <!--#region Grid setup-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"></ColumnDefinition>
+            <ColumnDefinition Width="820"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="600"/>
+        </Grid.RowDefinitions>
+
+        <!--#endregion-->
+
+        <!--#region Window border -->
+
+        <Border 
+            Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Border.Background>
+                <SolidColorBrush 
+                    Color="{StaticResource BGMainColor}" />
+            </Border.Background>
+         </Border>
+
+            <!--#endregion-->
+
+        <!--#region Side panel -->
+
+        <Grid Grid.Column="0" Grid.Row="1">
+
+            <Border 
+                CornerRadius="0,60,0,0">
+                <Border.Background>
+                <SolidColorBrush 
+                    Color="{StaticResource BGSideBarColor}" />
+                </Border.Background>
+            </Border>
+
+            <StackPanel Margin="0,70,0,0">
+
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          IsChecked="True"
+                          Command="{Binding HomeCommand}">
+                    <Label Content="HOME"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding ItemsCommand}">
+                    <Label Content="WYPOSAŻENIE"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}">
+                    <Label Content="BIURKA"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}">
+                    <Label Content="PIĘTRA"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}">
+                    <Label Content="BUDYNKI"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}">
+                    <Label Content="UŻYTKOWNICY"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+            </StackPanel>
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <!--#region Main View -->
+
+        <Grid Grid.Column="1" Grid.Row="1">
+
+            <ContentControl x:Name="Pages"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+
+        <!--#endregion-->
+
+    </Grid>
+</Window>
