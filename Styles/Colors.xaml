@@ -7,8 +7,14 @@
     <Color x:Key="ButtonBlueHoverColor">#058ACB</Color>
     <Color x:Key="ButtonTextColor">#DEDEDE</Color>
 
-    <Color x:Key="ShowButtonColor">#77F277</Color>
-    <Color x:Key="ShowButtonHoverColor">#CCFFCC</Color>
+    <Color x:Key="DeleteButtonColor">#F32525</Color>
+    <Color x:Key="DeleteButtonHoverColor">#BD0303</Color> 
+
+    <Color x:Key="EditButtonColor">#EFCA08</Color>
+    <Color x:Key="EditButtonHoverColor">#F49F0A</Color>
+    
+    <Color x:Key="ShowButtonColor">#85C15D</Color>
+    <Color x:Key="ShowButtonHoverColor">#19B244</Color>
 
     <Color x:Key="ActiveBarColor">#D9D9D9</Color>
 

@@ -101,8 +101,8 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
                                     <Button Style="{StaticResource ShowButtonStyle}"/>
-                                    <Button Content="Edit" Margin="5"/>
-                                    <Button Content="Delete" Margin="5"/>
+                                    <Button Style="{StaticResource EditButtonStyle}"/>
+                                    <Button Style="{StaticResource DeleteButtonStyle}"/>
 
                                 </StackPanel>
                             </DataTemplate>

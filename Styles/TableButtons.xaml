@@ -21,23 +21,18 @@
                             x:Name="ShowButtonBorder"
                             Height="20"
                             Width="20"
-                            Padding="1.5"
-                            Cursor="Hand"
-                            BorderThickness="2"
+                            Padding="3.6"
+                            Cursor="Hand"                            
                             >
 
                         <Border.Background>
                             <SolidColorBrush 
                                 x:Name="ShowButtonBG"
-                                Color="Transparent" />
-                        </Border.Background>
-                        <Border.BorderBrush>
-                            <SolidColorBrush 
                                 Color="{StaticResource ShowButtonColor}" />
-                        </Border.BorderBrush>
+                        </Border.Background>                        
                         <Border.Resources>
                             <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="3"/>
+                                <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Border.Resources>
 
@@ -57,7 +52,7 @@
                                 <Storyboard>
                                     <ColorAnimation Storyboard.TargetName="ShowButtonBG"
                                                     Storyboard.TargetProperty="Color"
-                                                    From="Transparent"
+                                                    From="{StaticResource ShowButtonColor}"
                                                     To="{StaticResource ShowButtonHoverColor}"
                                                     Duration="0:0:0.3" />
                                 </Storyboard>
@@ -73,7 +68,7 @@
                                     <ColorAnimation Storyboard.TargetName="ShowButtonBG"
                                                     Storyboard.TargetProperty="Color"
                                                     From="{StaticResource ShowButtonHoverColor}"
-                                                    To="Transparent"
+                                                    To="{StaticResource ShowButtonColor}"
                                                     Duration="0:0:0.3" />
                                 </Storyboard>
                             </BeginStoryboard>
@@ -90,4 +85,172 @@
 
     </Style>
 
+    <Style x:Key="EditButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="5" />
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                            x:Name="EditButtonBorder"
+                            Height="20"
+                            Width="20"
+                            Padding="4"
+                            Cursor="Hand"                            
+                            >
+
+                        <Border.Background>
+                            <SolidColorBrush 
+                                x:Name="EditButtonBG"
+                                Color="{StaticResource EditButtonColor}" />
+                        </Border.Background>
+                        <Border.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Border.Resources>
+
+                        <Image Source="/Assets/EditButton.png" Stretch="Fill"></Image>
+
+                    </Border>
+
+                    <!--#region Triggers-->
+
+                    <ControlTemplate.Triggers>
+
+
+                        <EventTrigger RoutedEvent="Border.MouseEnter"
+                                      SourceName="EditButtonBorder">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="EditButtonBG"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource EditButtonColor}"
+                                                    To="{StaticResource EditButtonHoverColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Border.MouseLeave"
+                                      SourceName="EditButtonBorder">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="EditButtonBG"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource EditButtonHoverColor}"
+                                                    To="{StaticResource EditButtonColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                    <!--#endregion-->
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="DeleteButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="5" />
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                            x:Name="DeleteButtonBorder"
+                            Height="20"
+                            Width="20"
+                            Padding="4.5"
+                            Cursor="Hand"                            
+                            >
+
+                        <Border.Background>
+                            <SolidColorBrush 
+                                x:Name="DeleteButtonBG"
+                                Color="{StaticResource DeleteButtonColor}" />
+                        </Border.Background>
+                        <Border.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Border.Resources>
+
+                        <Image Source="/Assets/DeleteButton.png" Stretch="Fill"></Image>
+
+                    </Border>
+
+                    <!--#region Triggers-->
+
+                    <ControlTemplate.Triggers>
+
+
+                        <EventTrigger RoutedEvent="Border.MouseEnter"
+                                      SourceName="DeleteButtonBorder">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="DeleteButtonBG"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource DeleteButtonColor}"
+                                                    To="{StaticResource DeleteButtonHoverColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Border.MouseLeave"
+                                      SourceName="DeleteButtonBorder">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="DeleteButtonBG"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource DeleteButtonHoverColor}"
+                                                    To="{StaticResource DeleteButtonColor}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                    <!--#endregion-->
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    
 </ResourceDictionary>
