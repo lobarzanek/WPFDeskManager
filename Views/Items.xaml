@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:WPFDeskManager.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="810">
+             d:DesignHeight="583" d:DesignWidth="810">
 
     <UserControl.DataContext>
         <vm:ItemsVM/>
@@ -49,26 +49,11 @@
         <Grid 
             Grid.Column="1" 
             HorizontalAlignment="Right" 
-            Margin="0,0,20,0"
+            Margin="0,0,30,0"
             VerticalAlignment="Center">
 
             <Button Content="DODAJ WYSPOSAŻENIE" 
-                    Padding="10" FontSize="12" 
-                    BorderBrush="Black"
-                    BorderThickness="4">
-                <Button.Background>
-                    <SolidColorBrush Color="{DynamicResource ButtonBlueColor}"/>
-                </Button.Background>
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-                <Button.Foreground>
-                    <SolidColorBrush Color="{DynamicResource ButtonTextColor}"/>
-                </Button.Foreground>
-
-            </Button>
+                    Style="{StaticResource AddBtnStyle}" />
 
         </Grid>
 
