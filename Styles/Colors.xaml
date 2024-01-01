@@ -28,8 +28,16 @@
 
     <!--#endregion-->
 
-    <!--#region Additional Colors-->
+    <!--#region Table Colors-->
 
+    <Color x:Key="TableColumnHeaderBGColor">Transparent</Color>
+    <Color x:Key="TableColumnHeaderTextColor">#0471A6</Color>
+
+    <Color x:Key="TableRowBGColor">#FFFFFF</Color>
+    <Color x:Key="TableRowBGHoverColor">#0471A6</Color>
+
+    <Color x:Key="TableRowTextHoverColor">#FFFFFF</Color>
+    <Color x:Key="TableRowTextColor">#000000</Color>
 
     <!--#endregion-->
     

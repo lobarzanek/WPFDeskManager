@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Styles/MenuButton.xaml" />
                 <ResourceDictionary Source="Styles/MenuButtonText.xaml" />
                 <ResourceDictionary Source="Styles/TableButtons.xaml" />
+                <ResourceDictionary Source="Styles/TableGridStyle.xaml" />
                 <ResourceDictionary Source="Utilities/DataTemplate.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>

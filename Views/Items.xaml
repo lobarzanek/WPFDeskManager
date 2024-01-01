@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="480"/>
+            <RowDefinition Height="463"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -79,23 +79,39 @@
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
 
             <DataGrid Name="ItemList" 
-                      ItemsSource="{Binding Items}"                       
-                      Width="780" 
-                      Height="460"
-                      HorizontalContentAlignment="Stretch"
-                      ScrollViewer.CanContentScroll="True" 
-                      AutoGenerateColumns="False"
+                      ItemsSource="{Binding Items}"
+                      Style="{StaticResource TableGridStyle}"
+                      ColumnHeaderStyle="{StaticResource TableColumnHeaderStyle}"
+                      RowStyle="{StaticResource TableRowStyle}" 
+                      CellStyle="{StaticResource TableCellStyle}"
                       >
 
-                <DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridRowHeader">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    
+                </DataGrid.Resources>
 
-                    <DataGridTextColumn  Binding ="{Binding Id}" Header="ID" Width="*"/>
-                    <DataGridTextColumn  Binding ="{Binding Name}" Header="Nazwa" Width="*"/>
-                    <DataGridTextColumn  Binding ="{Binding SerialNumber}" Header="Numer Seryjny" Width="*"/>
-                    <DataGridTextColumn  Binding ="{Binding Type}" Header="Typ" Width="*"/>
-                    <DataGridTextColumn  Binding ="{Binding Status}" Header="Status" Width="*"/>
-                    <DataGridTextColumn  Binding ="{Binding OwnerName}" Header="Właściciel" Width="*"/>
-                    <DataGridTemplateColumn   Header="Akcja" Width="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn  
+                        Binding ="{Binding Id}" 
+                        Header="ID" 
+                        Width="*" 
+                        IsReadOnly="True"                        
+                        />
+                    <DataGridTextColumn  Binding ="{Binding Name}" Header="Nazwa" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn  Binding ="{Binding SerialNumber}" Header="Numer Seryjny" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn  Binding ="{Binding Type}" Header="Typ" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn  Binding ="{Binding Status}" Header="Status" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn  Binding ="{Binding OwnerName}" Header="Właściciel" Width="*" IsReadOnly="True"/>
+                    <DataGridTemplateColumn   Header="" Width="Auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

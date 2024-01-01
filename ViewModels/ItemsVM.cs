@@ -20,8 +20,9 @@ namespace WPFDeskManager.ViewModels
 
         private void Initialize()
         {
-            PageTitle = "Items";
             Items = (ObservableCollection<Item>)_restService.GetItems();
+
+            PageTitle = $"Items {Items.Count}";
         }
     }
 }

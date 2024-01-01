@@ -109,7 +109,8 @@
         <Grid Grid.Column="1" Grid.Row="1">
 
             <ContentControl x:Name="Pages"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}" Height="583" VerticalAlignment="Top"
+                            />
 
         </Grid>
 
