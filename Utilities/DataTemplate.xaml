@@ -11,5 +11,9 @@
     <DataTemplate DataType="{x:Type vm:ItemsVM}">
         <view:Items />
     </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type vm:DesksVM}">
+        <view:Desks />
+    </DataTemplate>
+
 </ResourceDictionary>

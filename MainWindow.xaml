@@ -78,7 +78,8 @@
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
-                <Menu:Btn Style="{StaticResource BtnStyle}">
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding DesksCommand}">
                     <Label Content="BIURKA"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>

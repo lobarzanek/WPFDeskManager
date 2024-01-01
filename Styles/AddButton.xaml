@@ -6,12 +6,12 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource ButtonBlueColor}"/>
+                <SolidColorBrush Color="{DynamicResource ButtonBlueColor}"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource ButtonTextColor}"/>
+                <SolidColorBrush Color="{DynamicResource ButtonTextColor}"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
