@@ -19,11 +19,11 @@
     <Window.DataContext>
         <VM:NavigationVM/>
     </Window.DataContext>
-    
+
     <!--#endregion-->
-    
+
     <Grid>
-        
+
 
         <!--#region Grid setup-->
 
@@ -33,8 +33,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="600"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="643"/>
         </Grid.RowDefinitions>
 
         <!--#endregion-->
@@ -47,9 +47,9 @@
                 <SolidColorBrush 
                     Color="{StaticResource BGMainColor}" />
             </Border.Background>
-         </Border>
+        </Border>
 
-            <!--#endregion-->
+        <!--#endregion-->
 
         <!--#region Side panel -->
 
@@ -58,7 +58,7 @@
             <Border 
                 CornerRadius="0,60,0,0">
                 <Border.Background>
-                <SolidColorBrush 
+                    <SolidColorBrush 
                     Color="{StaticResource BGSideBarColor}" />
                 </Border.Background>
             </Border>
@@ -110,7 +110,7 @@
         <Grid Grid.Column="1" Grid.Row="1">
 
             <ContentControl x:Name="Pages"
-                            Content="{Binding CurrentView}" Height="583" VerticalAlignment="Top"
+                            Content="{Binding CurrentView}" Height="643" VerticalAlignment="Top"
                             />
 
         </Grid>

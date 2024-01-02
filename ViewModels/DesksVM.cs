@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WPFDeskManager.Data;
 using WPFDeskManager.Models;
@@ -18,7 +19,8 @@ namespace WPFDeskManager.ViewModels
         private readonly RestService _restService = new RestService();
         private ObservableCollection<Desk> _desks;
 
-        public string PageTitle { get; set; }
+        public ICommand ShowAddWindowCommand { get; set; }
+
         public ObservableCollection<Desk> Desks 
         { 
             get { return _desks; } 
@@ -33,6 +35,7 @@ namespace WPFDeskManager.ViewModels
         private void Initialize()
         {
             LoadDataAsync();
+            ShowAddWindowCommand = new RelayCommand(ShowAddWindow);
         }
 
         public async Task LoadDataAsync()
@@ -44,6 +47,7 @@ namespace WPFDeskManager.ViewModels
                 await Task.Delay(2000);
                 Desks = (ObservableCollection<Desk>)_restService.GetDesks();
                 PageTitle = $"Desks: {Desks.Count}";
+                AddButtonContent = "Dodaj biurko";
 
             }
             catch (Exception ex)
@@ -55,6 +59,19 @@ namespace WPFDeskManager.ViewModels
                 IsLoading = false; 
             }
         }
+        private void ShowAddWindow(object obj)
+        {
+            var mainWindow = obj as Window;
+
+            //AddUser addUserWin = new AddUser();
+            //addUserWin.Owner = mainWindow;
+            //addUserWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            //addUserWin.Show();
+
+
+        }
+
+
 
 
     }

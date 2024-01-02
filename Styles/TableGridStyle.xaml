@@ -5,7 +5,7 @@
 
     <Style x:Key="TableGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="Width" Value="780"/>
-        <Setter Property="Height" Value="440"/>
+        <Setter Property="Height" Value="500"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>

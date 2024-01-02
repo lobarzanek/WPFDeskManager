@@ -11,6 +11,8 @@ namespace WPFDeskManager.Utilities
     public class ViewModelBase : INotifyPropertyChanged
     {
         private bool _isLoading;
+        private string _addButtonContent;
+        private string _pageTitle;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,6 +20,16 @@ namespace WPFDeskManager.Utilities
         {
             get { return _isLoading; }
             set { _isLoading = value; OnPropertyChanged(); }
+        }
+        public string AddButtonContent
+        {
+            get { return _addButtonContent; }
+            set { _addButtonContent = value; OnPropertyChanged(); }
+        }
+        public string PageTitle
+        {
+            get { return _pageTitle; }
+            set { _pageTitle = value; OnPropertyChanged(); }
         }
 
         public void OnPropertyChanged([CallerMemberName] string propName = null)

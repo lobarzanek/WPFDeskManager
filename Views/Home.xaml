@@ -3,18 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:vm="clr-namespace:WPFDeskManager.ViewModels"
+             xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
+             xmlns:u="clr-namespace:WPFDeskManager.Utilities"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="820">
+             d:DesignHeight="643" d:DesignWidth="810">
     
     <UserControl.DataContext>
         <vm:HomeVM/>
     </UserControl.DataContext>
     
     <Grid>
-        
-        <Border Background="Bisque"/>
-        <Label Content="{Binding PageTitle}"/>
-        
+
+        <Label Content="Home"/>
+
     </Grid>
 </UserControl>
