@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace WPFDeskManager.Utilities
@@ -33,6 +34,15 @@ namespace WPFDeskManager.Utilities
         {
             get { return (string)GetValue(AddButtonTextProperty); }
             set { SetValue(AddButtonTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty AddButtonCommandProperty =
+            DependencyProperty.Register("AddButtonCommand", typeof(object), typeof(DefaultDataView), new PropertyMetadata(""));
+
+        public object AddButtonCommand
+        {
+            get { return GetValue(AddButtonCommandProperty); }
+            set { SetValue(AddButtonCommandProperty, value); }
         }
 
         public static readonly DependencyProperty IsLoadingProperty =

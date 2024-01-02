@@ -55,6 +55,7 @@
                             <Button 
                                 Content="{TemplateBinding AddButtonText}" 
                                 Style="{StaticResource AddBtnStyle}" 
+                                Command="{TemplateBinding AddButtonCommand}"
                                 Visibility="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}" />
                         </Grid>
 

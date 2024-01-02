@@ -295,5 +295,73 @@ namespace WPFDeskManager.Data
             };
             return _desks;
         }
+
+        public ObservableCollection<RoomBasicInfoDto> GetRoomsBasicInfo()
+        {
+            var _rooms = new ObservableCollection<RoomBasicInfoDto>()
+            {
+                new RoomBasicInfoDto
+                {
+                    Id = 1,
+                    Name = "Room #1"
+                },
+                new RoomBasicInfoDto
+                {
+                    Id = 2,
+                    Name = "Room #2"
+                },
+                new RoomBasicInfoDto
+                {
+                    Id = 3,
+                    Name = "Room #3"
+                },
+                new RoomBasicInfoDto
+                {
+                    Id = 4,
+                    Name = "Room #4"
+                },
+                new RoomBasicInfoDto
+                {
+                    Id = 5,
+                    Name = "Room #5"
+                },
+                new RoomBasicInfoDto
+                {
+                    Id = 6,
+                    Name = "Room #6"
+                },
+                new RoomBasicInfoDto
+                {
+                    Id = 7,
+                    Name = "Room #7"
+                }
+            };
+
+            return _rooms;
+        }
+
+        public ObservableCollection<DeskStatusDto> GetDeskStatuses()
+        {
+            var _statuses = new ObservableCollection<DeskStatusDto>()
+            {
+                new DeskStatusDto
+                {
+                    Id = 1,
+                    Name = "Working"
+                },
+                new DeskStatusDto
+                {
+                    Id = 2,
+                    Name = "Broken"
+                }
+            };
+
+            return _statuses;
+        }
+
+        public bool AddDesk()
+        {
+            return true;
+        }
     }
 }

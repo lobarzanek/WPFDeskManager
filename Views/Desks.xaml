@@ -6,7 +6,8 @@
              xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
              xmlns:u="clr-namespace:WPFDeskManager.Utilities"
              mc:Ignorable="d" 
-             d:DesignHeight="633" d:DesignWidth="810">
+             d:DesignHeight="633" d:DesignWidth="810"
+             >
 
     <UserControl.DataContext>
         <vm:DesksVM/>
@@ -75,6 +76,7 @@
             VerticalAlignment="Stretch"
             ViewTitle="{Binding PageTitle}" 
             AddButtonText="{Binding AddButtonContent}" 
+            AddButtonCommand="{Binding ShowAddWindowCommand}"
             IsLoading="{Binding IsLoading}"
             Content="{StaticResource Table}"
             >

@@ -12,6 +12,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         ResizeMode="CanMinimize"
+        Name="mainwindow"
         >
 
     <!--#region Data Context-->

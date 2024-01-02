@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WPFDeskManager.Utilities
 {
@@ -15,6 +16,8 @@ namespace WPFDeskManager.Utilities
         private string _pageTitle;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand ShowAddWindowCommand { get; set; }
 
         public bool IsLoading
         {
@@ -35,9 +38,7 @@ namespace WPFDeskManager.Utilities
         public void OnPropertyChanged([CallerMemberName] string propName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-
-        
+        }        
 
     }
 }

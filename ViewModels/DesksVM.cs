@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDeskManager.Data;
 using WPFDeskManager.Models;
 using WPFDeskManager.Utilities;
+using WPFDeskManager.Views;
 
 namespace WPFDeskManager.ViewModels
 {
@@ -18,8 +20,7 @@ namespace WPFDeskManager.ViewModels
     {
         private readonly RestService _restService = new RestService();
         private ObservableCollection<Desk> _desks;
-
-        public ICommand ShowAddWindowCommand { get; set; }
+               
 
         public ObservableCollection<Desk> Desks 
         { 
@@ -34,8 +35,8 @@ namespace WPFDeskManager.ViewModels
 
         private void Initialize()
         {
-            LoadDataAsync();
             ShowAddWindowCommand = new RelayCommand(ShowAddWindow);
+            LoadDataAsync();
         }
 
         public async Task LoadDataAsync()
@@ -59,20 +60,13 @@ namespace WPFDeskManager.ViewModels
                 IsLoading = false; 
             }
         }
+
         private void ShowAddWindow(object obj)
         {
-            var mainWindow = obj as Window;
-
-            //AddUser addUserWin = new AddUser();
-            //addUserWin.Owner = mainWindow;
-            //addUserWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            //addUserWin.Show();
-
-
+            AddDesk addDeskWindow = new AddDesk();
+            addDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            addDeskWindow.Show();
         }
-
-
-
 
     }
 }
