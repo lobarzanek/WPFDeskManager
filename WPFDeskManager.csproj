@@ -10,7 +10,14 @@
   <ItemGroup>
     <None Remove="Assets\DeleteButton.png" />
     <None Remove="Assets\EditButton.png" />
+    <None Remove="Assets\Loading.png" />
     <None Remove="Assets\ShowButton.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Loading.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

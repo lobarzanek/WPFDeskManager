@@ -10,11 +10,22 @@ namespace WPFDeskManager.Utilities
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
+        private bool _isLoading;
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { _isLoading = value; OnPropertyChanged(); }
+        }
+
         public void OnPropertyChanged([CallerMemberName] string propName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+
+        
 
     }
 }

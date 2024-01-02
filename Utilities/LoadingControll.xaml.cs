@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFDeskManager.Views
+namespace WPFDeskManager.Utilities
 {
     /// <summary>
-    /// Logika interakcji dla klasy Desks.xaml
+    /// Logika interakcji dla klasy LoadingControll.xaml
     /// </summary>
-    public partial class Desks : UserControl
+    public partial class LoadingControll : UserControl
     {
-        public Desks()
+        public LoadingControll()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Initialized(object sender, EventArgs e)
-        {
-
         }
     }
 }

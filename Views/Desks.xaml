@@ -3,13 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:vm="clr-namespace:WPFDeskManager.ViewModels"
+             xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
+             xmlns:u="clr-namespace:WPFDeskManager.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="583" d:DesignWidth="810">
 
     <UserControl.DataContext>
         <vm:DesksVM/>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        <u:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    </UserControl.Resources>
 
     <Grid>
 
@@ -59,6 +64,22 @@
 
         <!--#endregion-->
 
+        <!--#region Loading circle -->
+
+        <Grid 
+            Grid.Row="2" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Width="64" 
+            Height="64" 
+            Margin="373,108,0,0">
+            <u:LoadingControll 
+                Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}"
+                />
+        </Grid>
+
+        <!--#endregion-->
+
         <!--#region Desk List-->
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
@@ -69,6 +90,7 @@
                       ColumnHeaderStyle="{StaticResource TableColumnHeaderStyle}"
                       RowStyle="{StaticResource TableRowStyle}" 
                       CellStyle="{StaticResource TableCellStyle}"
+                      Visibility="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}"
                       >
 
                 <DataGrid.Resources>
