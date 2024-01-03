@@ -35,7 +35,6 @@ namespace WPFDeskManager.ViewModels
 
         private void Initialize()
         {
-            ShowAddWindowCommand = new RelayCommand(ShowAddWindow);
             LoadDataAsync();
         }
 
@@ -61,11 +60,23 @@ namespace WPFDeskManager.ViewModels
             }
         }
 
-        private void ShowAddWindow(object obj)
+        public override void ShowAddWindow(object obj)
         {
             AddDesk addDeskWindow = new AddDesk();
             addDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             addDeskWindow.Show();
+        }
+
+        public override void ShowCommandExecute(object parameter)
+        {
+            ShowDeskVM showDeskVM = new ShowDeskVM();
+            showDeskVM.EntityId = (int)parameter;
+
+            ShowDesk showDeskWindow = new ShowDesk();
+            showDeskWindow.DataContext = showDeskVM;
+            showDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            showDeskWindow.Show();
+
         }
 
     }

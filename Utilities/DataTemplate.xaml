@@ -20,4 +20,8 @@
         <view:AddDesk />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:ShowDeskVM}">
+        <view:ShowDesk />
+    </DataTemplate>
+
 </ResourceDictionary>

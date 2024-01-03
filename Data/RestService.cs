@@ -359,9 +359,11 @@ namespace WPFDeskManager.Data
             return _statuses;
         }
 
-        public bool AddDesk()
+        public Desk GetDeskById(int id)
         {
-            return true;
+            var _desks = GetDesks();
+
+            return _desks.Where(e => e.Id == id).FirstOrDefault();
         }
     }
 }
