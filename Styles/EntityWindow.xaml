@@ -1,0 +1,141 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region Entity Window Description Label-->
+
+    <Style x:Key="EntityWindowDescriptionLabel"
+           TargetType="Label">
+
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0 0 10 0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{StaticResource ButtonBlueColor}"/>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Entity Window Value Label-->
+
+    <Style x:Key="EntityWindowValueLabel"
+           TargetType="Label">
+
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="#000"/>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Entity Window Text Box -->
+
+    <Style x:Key="EntityWindowTextBox"
+           TargetType="{x:Type TextBox}">
+
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="#000"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+
+    </Style>
+    
+    <!--#endregion-->
+
+    <!--#region Entity Window Combo Box -->
+
+    <Style x:Key="EntityWindowComboBox"
+           TargetType="{x:Type ComboBox}">
+
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="#000"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="DisplayMemberPath" Value="Name"/>
+        <Setter Property="SelectedValuePath" Value="Name"/>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Entity Window Button -->
+
+    <Style x:Key="EntityWindowButton"
+           TargetType="Button">
+        
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource ButtonBlueColor}"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource ButtonTextColor}"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="10" Padding="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0 0 0 60"/>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Loading Grid -->
+
+    <Style x:Key="LoadingGrid"
+           TargetType="Grid">
+
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="64"/>
+        <Setter Property="Height" Value="64"/>
+        
+    </Style>
+
+    <!--#endregion-->
+
+</ResourceDictionary>

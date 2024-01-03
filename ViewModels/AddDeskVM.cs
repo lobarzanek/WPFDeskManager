@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -14,16 +15,13 @@ using WPFDeskManager.Views;
 
 namespace WPFDeskManager.ViewModels
 {
-    public class AddDeskVM : ViewModelBase
+    public class AddDeskVM : EntityWindowBase
     {
-        private readonly RestService _restService = new RestService();
         private AddDeskDto _addDeskDto;
         private ObservableCollection<RoomBasicInfoDto> _rooms;
         private ObservableCollection<DeskStatusDto> _statuses;
         private RoomBasicInfoDto _selectedRoom;
         private DeskStatusDto _selectedStatus;
-
-        public ICommand AddDeskCommand { get; set; }
 
         public AddDeskDto AddDeskDto
         {
@@ -52,24 +50,55 @@ namespace WPFDeskManager.ViewModels
             set { _selectedStatus = value; ChangeSelectedStatus(); }
         }
 
-        public AddDeskVM()
+        public override void SetWindowData()
         {
             AddDeskDto = new AddDeskDto();
-            Statuses = _restService.GetDeskStatuses();
-            Rooms = _restService.GetRoomsBasicInfo();
-            AddDeskCommand = new RelayCommand(AddDesk, CanAddDesk);
+            EntityButtonContent = "Dodaj biurko";
         }
 
-        private bool CanAddDesk(object arg)
+        public override async Task LoadDataAsync()
         {
-            return true;
+            this.IsLoading = true;
+
+            try
+            {
+                await Task.Delay(2000);
+                Statuses = _restService.GetDeskStatuses();
+                Rooms = _restService.GetRoomsBasicInfo();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                this.IsLoading = false;
+            }
         }
 
-        private void AddDesk(object obj)
+        public override void EntityButtonMethod(object obj)
         {
-            MessageBox.Show($"{AddDeskDto.Name}, {AddDeskDto.RoomId}, {AddDeskDto.StatusId}");
-            //_restService.AddDesk();
+            AddDeskAsync();
         }
+
+        private async Task AddDeskAsync()
+        {
+            try
+            {
+                this.IsLoading = true;
+                await Task.Delay(2000);                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                this.IsLoading = false;
+                MessageBox.Show($"{AddDeskDto.Name}, {AddDeskDto.RoomId}, {AddDeskDto.StatusId}");
+            }
+        }
+
         private void ChangeSelectedRoom()
         {
             AddDeskDto.RoomName = SelectedRoom.Name;

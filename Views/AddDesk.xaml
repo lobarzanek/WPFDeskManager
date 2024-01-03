@@ -4,104 +4,104 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDeskManager.Views" 
-        xmlns:vm="clr-namespace:WPFDeskManager.ViewModels"
+        xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
+        xmlns:u="clr-namespace:WPFDeskManager.Utilities"
         mc:Ignorable="d"
         Title="Add desk" Height="600" Width="450">
 
     <Window.DataContext>
         <vm:AddDeskVM/>
     </Window.DataContext>
+    <Window.Resources>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+            <u:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-            <RowDefinition Height="150"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="16*"/>
-            <ColumnDefinition Width="29*"/>
-        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Label 
-            Grid.Row="1"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="0,0,10,0"
-            Content="Nazwa :" Height="26" Width="51"/>
+            <Grid 
+               Style="{StaticResource LoadingGrid}"
+               >
+                    <u:LoadingControll 
+                        Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}" />
+            </Grid>
+        </Grid>
 
-        <TextBox
-            Grid.Row="1"
-            Grid.Column="1"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="10,0,0,0"
-            Width="150"
-            Height="30"
-            Text="{Binding AddDeskDto.Name}" 
-            TextAlignment="Left"     
-            VerticalContentAlignment="Center"
-            />
+        <Grid
+            Visibility="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16*"/>
+                <ColumnDefinition Width="29*"/>
+            </Grid.ColumnDefinitions>
 
-        <Label 
-            Grid.Row="2"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="0,0,10,0"
-            Content="Pokój :" Height="26" Width="45"/>
+            <Label 
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Nazwa :"/>
+                
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding AddDeskDto.Name}" 
+                TextAlignment="Left"     
+                VerticalContentAlignment="Center"
+                
+                />
 
-        <ComboBox
-            Grid.Row="2"
-            Grid.Column="1"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="10,0,0,0"
-            Width="150"
-            Height="30" 
-            VerticalContentAlignment="Center"
-            ItemsSource="{Binding Rooms}"
-            DisplayMemberPath="Name"
-            SelectedValuePath="Name"
-            SelectedItem="{Binding SelectedRoom, Mode=TwoWay}"
-            />
+            <Label 
+                Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Pokój :"/>
 
-        <Label 
-            Grid.Row="3"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="0,0,10,0"
-            Content="Status :" Height="26" Width="45"/>
+            <ComboBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource EntityWindowComboBox}"
+                ItemsSource="{Binding Rooms}"
+                SelectedItem="{Binding SelectedRoom, Mode=TwoWay}"
+                />
 
-        <ComboBox
-            Grid.Row="3"
-            Grid.Column="1"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="10,0,0,0"
-            Width="150"
-            Height="30" 
-            VerticalContentAlignment="Center"
-            ItemsSource="{Binding Statuses}"
-            DisplayMemberPath="Name"
-            SelectedValuePath="Name"
-            SelectedItem="{Binding SelectedStatus, Mode=TwoWay}"
-            />
+            <Label 
+                Grid.Row="3"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Status :"/>
 
-        <Button 
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            Width="180"
-            Height="40"
-            Margin="0 0 0 60"
-            Content="Dodaj biurko" 
-            Style="{StaticResource AddBtnStyle}" 
-            Command="{Binding AddDeskCommand}"/>
+            <ComboBox
+                Grid.Row="3"
+                Grid.Column="1"
+                Style="{StaticResource EntityWindowComboBox}"
+                ItemsSource="{Binding Statuses}"
+                SelectedItem="{Binding SelectedStatus, Mode=TwoWay}"
+                />
+
+            <Button 
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                Content="{Binding EntityButtonContent}" 
+                Style="{StaticResource EntityWindowButton}" 
+                Command="{Binding EntityButtonCommand}"/>
+        </Grid>
     </Grid>
+
 </Window>
