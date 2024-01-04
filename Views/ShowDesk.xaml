@@ -194,7 +194,7 @@
                 Grid.ColumnSpan="2"
                 Content="{Binding EntityButtonContent}" 
                 Style="{StaticResource EntityWindowButton}" 
-                Command="{Binding EntityButtonCommand}"
+                Command="{Binding CloseButtonCommand}"
                 CommandParameter="{Binding ElementName=ShowDeskWindow}"
                 />
         </Grid>

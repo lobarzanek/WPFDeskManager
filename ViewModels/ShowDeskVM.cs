@@ -43,14 +43,5 @@ namespace WPFDeskManager.ViewModels
                 this.IsLoading = false;
             }
         }
-
-        public override void EntityButtonMethod(object obj)
-        {
-            var window = obj as Window;
-            if (window != null)
-            {
-                window.Close();
-            }
-        }
     }
 }

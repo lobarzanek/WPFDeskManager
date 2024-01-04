@@ -17,6 +17,7 @@ namespace WPFDeskManager.Utilities
         public readonly RestService _restService = new RestService();
 
         public ICommand EntityButtonCommand { get; set; }
+        public ICommand CloseButtonCommand { get; set; }
         public string EntityButtonContent { get; set; }
         
 
@@ -29,6 +30,7 @@ namespace WPFDeskManager.Utilities
         {
             
             EntityButtonCommand = new RelayCommand(EntityButtonMethod, CanExecutableEntityButtonMethod);
+            CloseButtonCommand = new RelayCommand(CloseButtonMethod, CanExecutableCloseButtonMethod);
             LoadDataAsync();
             SetWindowData();
         }
@@ -51,6 +53,20 @@ namespace WPFDeskManager.Utilities
         public virtual void EntityButtonMethod(object obj)
         {
             return;
+        }
+
+        public bool CanExecutableCloseButtonMethod(object arg)
+        {
+            return true;
+        }
+
+        public void CloseButtonMethod(object obj)
+        {
+            var window = obj as Window;
+            if (window != null)
+            {
+                window.Close();
+            }
         }
     }
 }

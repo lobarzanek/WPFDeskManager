@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using WPFDeskManager.Models;
+using WPFDeskManager.Utilities;
 
 namespace WPFDeskManager.Data
 {
@@ -364,6 +366,25 @@ namespace WPFDeskManager.Data
             var _desks = GetDesks();
 
             return _desks.Where(e => e.Id == id).FirstOrDefault();
+        }
+
+        public bool DeleteEntity(int id, EntityType type)
+        {
+            switch (type)
+            {   
+                case EntityType.Building:
+                case EntityType.Desk:
+                case EntityType.DeskStatus:
+                case EntityType.Floor:
+                case EntityType.Room:
+                case EntityType.User:
+                    return true;
+
+                case EntityType.Unknown:
+                    return false;
+
+                default: return false;
+            }
         }
     }
 }

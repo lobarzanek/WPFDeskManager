@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
              xmlns:u="clr-namespace:WPFDeskManager.Utilities"
+             xmlns:uc="clr-namespace:WPFDeskManager.Utilities.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="633" d:DesignWidth="810"
              >
@@ -15,6 +16,7 @@
     
     <UserControl.Resources>
         <u:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+        <uc:DeleteButtonCommandConverter x:Key="DeleteButtonCommandConverter"/>
         
         <DataTemplate x:Key="Table">
             
@@ -45,7 +47,8 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn  
-                Binding ="{Binding Id}" 
+                Binding ="{Binding Id}"
+                x:Name="ID"
                 Header="ID" 
                 Width="*" 
                 IsReadOnly="True"/>
@@ -67,7 +70,14 @@
                                     <Button 
                                         Style="{StaticResource DeleteButtonStyle}"
                                         Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
-                                        CommandParameter="{Binding Id}"/>
+                                        >
+                                        <Button.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource DeleteButtonCommandConverter}">
+                                                <Binding Path="Id"/>
+                                                <Binding Path="Name"/>
+                                            </MultiBinding>                                                          
+                                        </Button.CommandParameter>
+                                    </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -76,7 +76,23 @@ namespace WPFDeskManager.ViewModels
             showDeskWindow.DataContext = showDeskVM;
             showDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             showDeskWindow.Show();
+        }
 
+        public override void DeleteCommandExecute(object parameter)
+        {
+            var values = (object[])parameter;
+            var id = (int)values[0];
+            var name = (string)values[1];
+
+            DeleteEntityVM deleteEntityVM = new DeleteEntityVM();
+            deleteEntityVM.EntityId = id;
+            deleteEntityVM.EntityName = name;
+            deleteEntityVM.EntityType = EntityType.Desk;
+
+            DeleteEntity deleteEntityWindow = new DeleteEntity();
+            deleteEntityWindow.DataContext = deleteEntityVM;
+            deleteEntityWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            deleteEntityWindow.Show();
         }
 
     }
