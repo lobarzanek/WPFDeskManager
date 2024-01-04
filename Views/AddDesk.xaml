@@ -61,10 +61,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource EntityWindowTextBox}"
-                Text="{Binding AddDeskDto.Name}" 
-                TextAlignment="Left"     
-                VerticalContentAlignment="Center"
-                
+                Text="{Binding AddDeskDto.Name}"                 
                 />
 
             <Label 
