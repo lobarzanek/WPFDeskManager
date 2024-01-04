@@ -1,0 +1,206 @@
+﻿<Window 
+        x:Name="EditDeskWindow"
+        x:Class="WPFDeskManager.Views.EditDesk"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDeskManager.Views" 
+        xmlns:u="clr-namespace:WPFDeskManager.Utilities" 
+        xmlns:vm="clr-namespace:WPFDeskManager.ViewModels"
+        mc:Ignorable="d"
+        Title="EditDesk" Height="600" Width="450">
+
+    <Window.DataContext>
+        <vm:EditDeskVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        <u:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid 
+               Style="{StaticResource LoadingGrid}"
+               >
+                <u:LoadingControll 
+                        Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}" />
+            </Grid>
+        </Grid>
+
+        <Grid
+            Visibility="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="112*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label 
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="ID :"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowValueLabel}"
+                Content="{Binding Desk.Id}"
+                />
+
+            <Label 
+                Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Name :"
+                />
+
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding Desk.Name}"
+                />
+
+            <Label 
+                Grid.Row="3"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Map X Location :"
+                />
+
+            <TextBox
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding Desk.MapXLocation}"
+                />
+
+            <Label 
+                Grid.Row="4"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Map Y Location :"
+                />
+
+            <TextBox
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding Desk.MapYLocation}"
+                />
+
+            <Label 
+                Grid.Row="5"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Map Width :"
+                />
+
+            <TextBox
+                Grid.Row="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding Desk.Width}"
+                />
+
+            <Label 
+                Grid.Row="6"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Map Height :"
+                />
+
+            <TextBox
+                Grid.Row="6"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding Desk.Height}"
+                />
+
+            <Label 
+                Grid.Row="7"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Room :"/>
+
+            <ComboBox
+                Grid.Row="7"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowComboBox}"
+                ItemsSource="{Binding Rooms}"
+                SelectedItem="{Binding SelectedRoom}"
+                Text="{Binding SelectedRoom.Name}"
+                />
+
+            <Label 
+                Grid.Row="8"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Status :"
+                />
+
+            <ComboBox
+                Grid.Row="8"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowComboBox}"
+                ItemsSource="{Binding Statuses}"
+                SelectedItem="{Binding SelectedStatus}"
+                Text="{Binding SelectedStatus.Name}"
+                />
+
+
+            <Button 
+                Grid.Row="11"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Content="{Binding EntityButtonContent}" 
+                Style="{StaticResource EntityWindowButton}" 
+                Command="{Binding EntityButtonCommand}"
+                CommandParameter="{Binding ElementName=EditDeskWindow}"
+                Margin="0,0,0,0"
+                />
+
+            <Button 
+                Grid.Row="11"
+                Grid.Column="2"
+                Content="{Binding CancelButtonContent}" 
+                Style="{StaticResource EntityWindowButton}" 
+                Command="{Binding CloseButtonCommand}"
+                CommandParameter="{Binding ElementName=EditDeskWindow}"
+                Margin="0,0,0,0"
+                />
+        </Grid>
+    </Grid>
+</Window>

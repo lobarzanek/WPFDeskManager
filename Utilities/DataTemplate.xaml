@@ -23,7 +23,11 @@
     <DataTemplate DataType="{x:Type vm:ShowDeskVM}">
         <view:ShowDesk />
     </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type vm:EditDeskVM}">
+        <view:EditDesk />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:DeleteEntityVM}">
         <view:DeleteEntity />
     </DataTemplate>
