@@ -3,73 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:vm="clr-namespace:WPFDeskManager.ViewModels"
+             xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
+             xmlns:uc="clr-namespace:WPFDeskManager.Utilities.Converters" 
+             xmlns:u="clr-namespace:WPFDeskManager.Utilities"
              mc:Ignorable="d" 
-             d:DesignHeight="583" d:DesignWidth="810">
+             d:DesignHeight="633" d:DesignWidth="810">
 
     <UserControl.DataContext>
         <vm:ItemsVM/>
     </UserControl.DataContext>
 
-    <Grid>
+    <UserControl.Resources>
+        <uc:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+        <uc:DeleteButtonCommandConverter x:Key="DeleteButtonCommandConverter"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="463"/>
-        </Grid.RowDefinitions>
+        <DataTemplate x:Key="Table">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="230"/>
-        </Grid.ColumnDefinitions>
+            <DataGrid 
+                    ItemsSource="{Binding Items}"
+                    Style="{StaticResource TableGridStyle}"
+                    ColumnHeaderStyle="{StaticResource TableColumnHeaderStyle}"
+                    RowStyle="{StaticResource TableRowStyle}" 
+                    CellStyle="{StaticResource TableCellStyle}"
+                    Visibility="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}">
 
-        <Border Grid.RowSpan="3" Grid.ColumnSpan="2">
-            <Border.Background>
-                <SolidColorBrush 
-                    Color="{StaticResource BGMainColor}" />
-            </Border.Background>
-        </Border>
-
-        <!--#region Title-->
-
-        <Grid 
-              Grid.Column="0" 
-              HorizontalAlignment="Left" 
-              VerticalAlignment="Center">
-
-            <Label Content="{Binding PageTitle}" Margin="20,0,0,0" FontSize="20"/>
-
-        </Grid>
-
-        <!--#endregion-->
-
-        <!--#region Add Button-->
-
-        <Grid 
-            Grid.Column="1" 
-            HorizontalAlignment="Right" 
-            Margin="0,0,30,0"
-            VerticalAlignment="Center">
-
-            <Button Content="DODAJ WYSPOSAŻENIE" 
-                    Style="{StaticResource AddBtnStyle}" />
-
-        </Grid>
-
-        <!--#endregion-->
-
-        <!--#region Item List-->
-
-        <Grid Grid.Row="2" Grid.ColumnSpan="2">
-
-            <DataGrid Name="ItemList" 
-                      ItemsSource="{Binding Items}"
-                      Style="{StaticResource TableGridStyle}"
-                      ColumnHeaderStyle="{StaticResource TableColumnHeaderStyle}"
-                      RowStyle="{StaticResource TableRowStyle}" 
-                      CellStyle="{StaticResource TableCellStyle}"
-                      >
+                <DataGrid.DataContext>
+                    <vm:ItemsVM/>
+                </DataGrid.DataContext>
 
                 <DataGrid.Resources>
                     <Style TargetType="DataGridRowHeader">
@@ -81,40 +41,96 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    
                 </DataGrid.Resources>
+
 
                 <DataGrid.Columns>
                     <DataGridTextColumn  
-                        Binding ="{Binding Id}" 
-                        Header="ID" 
-                        Width="*" 
-                        IsReadOnly="True"                        
-                        />
-                    <DataGridTextColumn  Binding ="{Binding Name}" Header="Nazwa" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn  Binding ="{Binding SerialNumber}" Header="Numer Seryjny" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn  Binding ="{Binding Type}" Header="Typ" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn  Binding ="{Binding Status}" Header="Status" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn  Binding ="{Binding OwnerName}" Header="Właściciel" Width="*" IsReadOnly="True"/>
-                    <DataGridTemplateColumn   Header="" Width="Auto">
+                Binding ="{Binding Id}"
+                x:Name="ID"
+                Header="ID" 
+                Width="*" 
+                IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Name}"  Width="*" IsReadOnly="True">
+                        <DataGridColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource TableColumnHeaderStyle}">
+                                <Setter Property="Content" Value="{Binding Path=DataContext.NameTableHeader, RelativeSource={RelativeSource AncestorType={x:Type DataGridCellsPanel}}}" />
+                            </Style>
+                        </DataGridColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Binding ="{Binding SerialNumber}" Width="*" IsReadOnly="True">
+                        <DataGridColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource TableColumnHeaderStyle}">
+                                <Setter Property="Content" Value="{Binding Path=DataContext.SerialTableHeader, RelativeSource={RelativeSource AncestorType={x:Type DataGridCellsPanel}}}" />
+                            </Style>
+                        </DataGridColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Binding ="{Binding Type}" Width="*" IsReadOnly="True">
+                        <DataGridColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource TableColumnHeaderStyle}">
+                                <Setter Property="Content" Value="{Binding Path=DataContext.TypeTableHeader, RelativeSource={RelativeSource AncestorType={x:Type DataGridCellsPanel}}}" />
+                            </Style>
+                        </DataGridColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Binding ="{Binding Status}" Width="*" IsReadOnly="True">
+                        <DataGridColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource TableColumnHeaderStyle}">
+                                <Setter Property="Content" Value="{Binding Path=DataContext.StatusTableHeader, RelativeSource={RelativeSource AncestorType={x:Type DataGridCellsPanel}}}" />
+                            </Style>
+                        </DataGridColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Binding ="{Binding OwnerName}" Width="*" IsReadOnly="True">
+                        <DataGridColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource TableColumnHeaderStyle}">
+                                <Setter Property="Content" Value="{Binding Path=DataContext.OwnerTableHeader, RelativeSource={RelativeSource AncestorType={x:Type DataGridCellsPanel}}}" />
+                            </Style>
+                        </DataGridColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="" Width="Auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-
-                                    <Button Style="{StaticResource ShowButtonStyle}"/>
-                                    <Button Style="{StaticResource EditButtonStyle}"/>
-                                    <Button Style="{StaticResource DeleteButtonStyle}"/>
-
+                                    <Button 
+                                        Style="{StaticResource ShowButtonStyle}" 
+                                        Command="{Binding DataContext.ShowCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding Id}"/>
+                                    <Button 
+                                        Style="{StaticResource EditButtonStyle}"
+                                        Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding Id}"/>
+                                    <Button 
+                                        Style="{StaticResource DeleteButtonStyle}"
+                                        Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        >
+                                        <Button.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource DeleteButtonCommandConverter}">
+                                                <Binding Path="Id"/>
+                                                <Binding Path="Name"/>
+                                            </MultiBinding>
+                                        </Button.CommandParameter>
+                                    </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+        </DataTemplate>
+    </UserControl.Resources>
 
-        </Grid>
 
-        <!--#endregion-->
+    <Grid>
+
+        <u:DefaultDataView 
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            ViewTitle="{Binding PageTitle}" 
+            AddButtonText="{Binding AddButtonContent}" 
+            AddButtonCommand="{Binding ShowAddWindowCommand}"
+            IsLoading="{Binding IsLoading}"
+            Content="{StaticResource Table}"
+            >
+        </u:DefaultDataView>
 
     </Grid>
 </UserControl>

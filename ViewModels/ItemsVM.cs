@@ -1,28 +1,136 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Windows;
 using WPFDeskManager.Data;
 using WPFDeskManager.Models;
+using WPFDeskManager.Utilities;
 using WPFDeskManager.Utilities.Base;
+using WPFDeskManager.Views;
 
 namespace WPFDeskManager.ViewModels
 {
     public class ItemsVM : ViewModelBase
     {
-        private readonly RestService _restService = new RestService();
-        
-        public string PageTitle { get; set; }
-        public ObservableCollection<Item> Items { get; set; }
+        private ObservableCollection<Item> _items = new ObservableCollection<Item>();
+        public string _nameTableHeader;
+        private string _serialTableHeader;
+        private string _typeTableHeader;
+        private string _statusTableHeader;
+        private string _ownerTableHeader;
+
+        public ObservableCollection<Item> Items {
+            get { return _items; }
+            set { _items = value; OnPropertyChanged(); }
+        }
+        public string NameTableHeader
+        {
+            get { return _nameTableHeader; }
+            set { _nameTableHeader = value; OnPropertyChanged(); }
+        }
+        public string SerialTableHeader
+        {
+            get { return _serialTableHeader; }
+            set { _serialTableHeader = value; OnPropertyChanged(); }
+        }
+        public string TypeTableHeader
+        {
+            get { return _typeTableHeader; }
+            set { _typeTableHeader = value; OnPropertyChanged(); }
+        }
+        public string StatusTableHeader
+        {
+            get { return _statusTableHeader; }
+            set { _statusTableHeader = value; OnPropertyChanged(); }
+        }
+        public string OwnerTableHeader
+        {
+            get { return _ownerTableHeader; }
+            set { _ownerTableHeader = value; OnPropertyChanged(); }
+        }
 
         public ItemsVM()
         {
             Initialize();
         }
 
-        private void Initialize()
+        public override void SetWindowData()
         {
-            Items = (ObservableCollection<Item>)_restService.GetItems();
+            NameTableHeader = "Nazwa";
+            SerialTableHeader = "Numer seryjny";
+            TypeTableHeader = "Typ";
+            StatusTableHeader = "Status";
+            OwnerTableHeader = "Właściciel";
+        }
 
-            PageTitle = $"Items {Items.Count}";
+        public override async Task LoadDataAsync()
+        {
+            IsLoading = true;
+
+            try
+            {
+                await Task.Delay(2000);
+                Items = (ObservableCollection<Item>)_restService.GetItemsAsync();
+                PageTitle = $"Wyposażenie: {Items.Count}";
+                AddButtonContent = "Dodaj wyposażenie";
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        public override void ShowAddWindow(object obj)
+        {
+            AddItem addItemWindow = new AddItem();
+            addItemWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            addItemWindow.Show();
+        }
+
+        public override void ShowCommandExecute(object parameter)
+        {
+            /*ShowDeskVM showDeskVM = new ShowDeskVM();
+            showDeskVM.EntityId = (int)parameter;
+
+            ShowDesk showDeskWindow = new ShowDesk();
+            showDeskWindow.DataContext = showDeskVM;
+            showDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            showDeskWindow.Show();*/
+        }
+
+        public override void DeleteCommandExecute(object parameter)
+        {
+            /*var values = (object[])parameter;
+            var id = (int)values[0];
+            var name = (string)values[1];
+
+            DeleteEntityVM deleteEntityVM = new DeleteEntityVM();
+            deleteEntityVM.EntityId = id;
+            deleteEntityVM.EntityName = name;
+            deleteEntityVM.EntityType = EntityType.Desk;
+
+            DeleteEntity deleteEntityWindow = new DeleteEntity();
+            deleteEntityWindow.DataContext = deleteEntityVM;
+            deleteEntityWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            deleteEntityWindow.Show();*/
+        }
+
+        public override void EditCommandExecute(object parameter)
+        {
+            /*EditDeskVM editDeskVM = new EditDeskVM();
+            editDeskVM.EntityId = (int)parameter;
+
+            EditDesk editDeskWindow = new EditDesk();
+            editDeskWindow.DataContext = editDeskVM;
+            editDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            editDeskWindow.Show();*/
         }
     }
 }

@@ -19,9 +19,7 @@ namespace WPFDeskManager.ViewModels
 {
     public class DesksVM : ViewModelBase
     {
-        private readonly RestService _restService = new RestService();
-        private ObservableCollection<Desk> _desks;
-               
+        private ObservableCollection<Desk> _desks;               
 
         public ObservableCollection<Desk> Desks 
         { 
@@ -36,17 +34,17 @@ namespace WPFDeskManager.ViewModels
 
         private void Initialize()
         {
-            LoadDataAsync();
+            base.Initialize();
         }
 
-        public async Task LoadDataAsync()
+        public override async Task LoadDataAsync()
         {
             IsLoading = true;
 
             try
             {
                 await Task.Delay(2000);
-                Desks = (ObservableCollection<Desk>)_restService.GetDesks();
+                Desks = (ObservableCollection<Desk>)_restService.GetDesksAsync();
                 PageTitle = $"Desks: {Desks.Count}";
                 AddButtonContent = "Dodaj biurko";
 
