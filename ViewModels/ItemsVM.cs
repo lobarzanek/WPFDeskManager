@@ -96,30 +96,30 @@ namespace WPFDeskManager.ViewModels
 
         public override void ShowCommandExecute(object parameter)
         {
-            /*ShowDeskVM showDeskVM = new ShowDeskVM();
-            showDeskVM.EntityId = (int)parameter;
+            ShowItemVM showItemVM = new ShowItemVM();
+            showItemVM.EntityId = (int)parameter;
 
-            ShowDesk showDeskWindow = new ShowDesk();
-            showDeskWindow.DataContext = showDeskVM;
-            showDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            showDeskWindow.Show();*/
+            ShowItem showItemWindow = new ShowItem();
+            showItemWindow.DataContext = showItemVM;
+            showItemWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            showItemWindow.Show();
         }
 
         public override void DeleteCommandExecute(object parameter)
         {
-            /*var values = (object[])parameter;
+            var values = (object[])parameter;
             var id = (int)values[0];
             var name = (string)values[1];
 
             DeleteEntityVM deleteEntityVM = new DeleteEntityVM();
             deleteEntityVM.EntityId = id;
             deleteEntityVM.EntityName = name;
-            deleteEntityVM.EntityType = EntityType.Desk;
+            deleteEntityVM.EntityType = EntityType.Item;
 
             DeleteEntity deleteEntityWindow = new DeleteEntity();
             deleteEntityWindow.DataContext = deleteEntityVM;
             deleteEntityWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            deleteEntityWindow.Show();*/
+            deleteEntityWindow.Show();
         }
 
         public override void EditCommandExecute(object parameter)

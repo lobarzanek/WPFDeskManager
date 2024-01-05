@@ -13,6 +13,7 @@ namespace WPFDeskManager.Utilities
         Desk,
         DeskStatus,
         Floor,
+        Item,
         Room,
         User,        
     }
