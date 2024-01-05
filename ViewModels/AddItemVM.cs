@@ -118,7 +118,7 @@ namespace WPFDeskManager.ViewModels
             }
             finally
             {
-                this.IsLoading = result;
+                this.IsLoading = !result;
             }
         }
         private void ChangeSelectedDesk()
