@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPFDeskManager.Utilities
+namespace WPFDeskManager.Utilities.Base
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
@@ -59,11 +59,11 @@ namespace WPFDeskManager.Utilities
 
         public virtual void ShowAddWindow(object obj) { }
         public virtual void ShowCommandExecute(object parameter) { }
-        
+
         public virtual void EditCommandExecute(object parameter) { }
-        
+
         public virtual void DeleteCommandExecute(object parameter) { }
-        
+
 
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using WPFDeskManager.Data;
 using WPFDeskManager.Models;
-using WPFDeskManager.Utilities;
+using WPFDeskManager.Utilities.Base;
 
 namespace WPFDeskManager.ViewModels
 {

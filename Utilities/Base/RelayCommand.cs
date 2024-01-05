@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPFDeskManager.Utilities
+namespace WPFDeskManager.Utilities.Base
 {
     class RelayCommand : ICommand
     {

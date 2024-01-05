@@ -10,7 +10,7 @@ using WPFDeskManager.Data;
 using WPFDeskManager.Models;
 using WPFDeskManager.Views;
 
-namespace WPFDeskManager.Utilities
+namespace WPFDeskManager.Utilities.Base
 {
     public abstract class EntityWindowBase : ViewModelBase
     {
@@ -19,7 +19,7 @@ namespace WPFDeskManager.Utilities
         public ICommand EntityButtonCommand { get; set; }
         public ICommand CloseButtonCommand { get; set; }
         public string EntityButtonContent { get; set; }
-        
+
 
         public EntityWindowBase()
         {
@@ -28,7 +28,7 @@ namespace WPFDeskManager.Utilities
 
         public void Initialize()
         {
-            
+
             EntityButtonCommand = new RelayCommand(EntityButtonMethod, CanExecutableEntityButtonMethod);
             CloseButtonCommand = new RelayCommand(CloseButtonMethod, CanExecutableCloseButtonMethod);
             LoadDataAsync();

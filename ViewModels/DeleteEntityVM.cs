@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WPFDeskManager.Models;
 using WPFDeskManager.Utilities;
+using WPFDeskManager.Utilities.Base;
 using WPFDeskManager.Views;
 
 namespace WPFDeskManager.ViewModels

@@ -36,7 +36,7 @@
                             </Style>
                         </Border.Resources>
 
-                        <Image Source="/Assets/ShowButton.png" Stretch="Fill"></Image>
+                        <Image Source="/Assets/Images/ShowButton.png" Stretch="Fill"></Image>
 
                     </Border>
 
@@ -120,7 +120,7 @@
                             </Style>
                         </Border.Resources>
 
-                        <Image Source="/Assets/EditButton.png" Stretch="Fill"></Image>
+                        <Image Source="/Assets/Images/EditButton.png" Stretch="Fill"></Image>
 
                     </Border>
 
@@ -204,7 +204,7 @@
                             </Style>
                         </Border.Resources>
 
-                        <Image Source="/Assets/DeleteButton.png" Stretch="Fill"></Image>
+                        <Image Source="/Assets/Images/DeleteButton.png" Stretch="Fill"></Image>
 
                     </Border>
 

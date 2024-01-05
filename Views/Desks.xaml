@@ -15,7 +15,7 @@
     </UserControl.DataContext>
     
     <UserControl.Resources>
-        <u:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+        <uc:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
         <uc:DeleteButtonCommandConverter x:Key="DeleteButtonCommandConverter"/>
         
         <DataTemplate x:Key="Table">

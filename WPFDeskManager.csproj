@@ -15,19 +15,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Loading.png">
+    <Resource Include="Assets\Images\Loading.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\DeleteButton.png">
+    <Resource Include="Assets\Images\DeleteButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\EditButton.png">
+    <Resource Include="Assets\Images\EditButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\ShowButton.png">
+    <Resource Include="Assets\Images\ShowButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

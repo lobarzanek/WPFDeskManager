@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDeskManager.Views" 
         xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
-        xmlns:u="clr-namespace:WPFDeskManager.Utilities"
+        xmlns:u="clr-namespace:WPFDeskManager.Utilities" 
+        xmlns:uc="clr-namespace:WPFDeskManager.Utilities.Converters"
         mc:Ignorable="d"
         Title="Add desk" Height="600" Width="450">
 
@@ -14,7 +15,7 @@
     </Window.DataContext>
     <Window.Resources>
             <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
-            <u:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+            <uc:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
     </Window.Resources>
 
     <Grid>

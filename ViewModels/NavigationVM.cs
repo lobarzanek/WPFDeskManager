@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using WPFDeskManager.Utilities;
+using WPFDeskManager.Utilities.Base;
 
 namespace WPFDeskManager.ViewModels
 {
