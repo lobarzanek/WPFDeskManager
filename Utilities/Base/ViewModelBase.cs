@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPFDeskManager.Data;
 
 namespace WPFDeskManager.Utilities.Base
 {
@@ -15,6 +16,8 @@ namespace WPFDeskManager.Utilities.Base
         private string _addButtonContent;
         private int _entityId;
         private string _pageTitle;
+        public readonly RestService _restService = new RestService();
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,6 +53,22 @@ namespace WPFDeskManager.Utilities.Base
             ShowCommand = new RelayCommand(ShowCommandExecute);
             EditCommand = new RelayCommand(EditCommandExecute);
             DeleteCommand = new RelayCommand(DeleteCommandExecute);
+
+            Initialize();
+        }
+
+        public virtual void Initialize()
+        {
+            LoadDataAsync();
+            SetWindowData();
+        }
+
+        public virtual void SetWindowData()
+        {
+        }
+
+        public virtual async Task LoadDataAsync()
+        {
         }
 
         public void OnPropertyChanged([CallerMemberName] string propName = null)

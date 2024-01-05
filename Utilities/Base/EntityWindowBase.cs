@@ -26,23 +26,11 @@ namespace WPFDeskManager.Utilities.Base
             Initialize();
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
-
             EntityButtonCommand = new RelayCommand(EntityButtonMethod, CanExecutableEntityButtonMethod);
             CloseButtonCommand = new RelayCommand(CloseButtonMethod, CanExecutableCloseButtonMethod);
-            LoadDataAsync();
-            SetWindowData();
-        }
-
-        public virtual void SetWindowData()
-        {
-            return;
-        }
-
-        public virtual Task LoadDataAsync()
-        {
-            return Task.CompletedTask;
+            base.Initialize();
         }
 
         public virtual bool CanExecutableEntityButtonMethod(object arg)

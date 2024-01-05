@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
@@ -17,7 +18,7 @@ namespace WPFDeskManager.Data
 
         }
 
-        public ICollection<Item> GetItems()
+        public ICollection<Item> GetItemsAsync()
         {
 
             var _items = new ObservableCollection<Item>() {
@@ -172,8 +173,19 @@ namespace WPFDeskManager.Data
 
             return _items;
         }
+        public async Task<Item> GetItemByIdAsync(int id)
+        {
+            var _items = GetItemsAsync();
 
-        public ICollection<Desk> GetDesks()
+            return _items.Where(e => e.Id == id).FirstOrDefault();
+        }
+        public async Task<bool> AddItemAsync(AddItemDto addItemDto)
+        {
+            await Task.Delay(2000);
+            return true;
+        }
+
+        public ICollection<Desk> GetDesksAsync()
         {
             var _desks = new ObservableCollection<Desk>()
             {
@@ -297,6 +309,73 @@ namespace WPFDeskManager.Data
             };
             return _desks;
         }
+        public async Task<ObservableCollection<DeskBasicInfoDto>> GetDesksBasicInfoAsync()
+        {            
+            var _desks = new ObservableCollection<DeskBasicInfoDto>()
+            {
+                new DeskBasicInfoDto
+                {
+                    Id = 1,
+                    Name = "Desk #1"
+                },
+                new DeskBasicInfoDto
+                {
+                    Id = 2,
+                    Name = "Desk #2"
+                },
+                new DeskBasicInfoDto
+                {
+                    Id = 3,
+                    Name = "Desk #3"
+                },
+                new DeskBasicInfoDto
+                {
+                    Id = 4,
+                    Name = "Desk #4"
+                },
+                new DeskBasicInfoDto
+                {
+                    Id = 5,
+                    Name = "Desk #5"
+                },
+                new DeskBasicInfoDto
+                {
+                    Id = 6,
+                    Name = "Desk #6"
+                },
+                new DeskBasicInfoDto
+                {
+                    Id = 7,
+                    Name = "Desk #7"
+                }
+            };
+
+            return _desks;
+        }
+        public ObservableCollection<DeskStatusDto> GetDeskStatuses()
+        {
+            var _statuses = new ObservableCollection<DeskStatusDto>()
+            {
+                new DeskStatusDto
+                {
+                    Id = 1,
+                    Name = "Working"
+                },
+                new DeskStatusDto
+                {
+                    Id = 2,
+                    Name = "Broken"
+                }
+            };
+
+            return _statuses;
+        }
+        public Desk GetDeskById(int id)
+        {
+            var _desks = GetDesksAsync();
+
+            return _desks.Where(e => e.Id == id).FirstOrDefault();
+        }
 
         public ObservableCollection<RoomBasicInfoDto> GetRoomsBasicInfo()
         {
@@ -342,31 +421,67 @@ namespace WPFDeskManager.Data
             return _rooms;
         }
 
-        public ObservableCollection<DeskStatusDto> GetDeskStatuses()
+        public async Task<ObservableCollection<Brand>> GetBrandsAsync()
         {
-            var _statuses = new ObservableCollection<DeskStatusDto>()
+            var _brands = new ObservableCollection<Brand>()
             {
-                new DeskStatusDto
+                new Brand
                 {
                     Id = 1,
-                    Name = "Working"
+                    Name = "Brand #1"
                 },
-                new DeskStatusDto
+                new Brand
                 {
                     Id = 2,
-                    Name = "Broken"
-                }
+                    Name = "Brand #2"
+                },
+                new Brand
+                {
+                    Id = 3,
+                    Name = "Brand #3"
+                },
+                new Brand
+                {
+                    Id = 4,
+                    Name = "Brand #4"
+                },
+
             };
 
-            return _statuses;
+            return _brands;
         }
 
-        public Desk GetDeskById(int id)
+        public async Task<ObservableCollection<UserBasicInfoDto>> GetUsersBasicInfoAsync()
         {
-            var _desks = GetDesks();
+            var _users = new ObservableCollection<UserBasicInfoDto>()
+            {
+                new UserBasicInfoDto
+                {
+                    Id = 1,
+                    Name = "User #1"
+                },
+                new UserBasicInfoDto
+                {
+                    Id = 2,
+                    Name = "User #2"
+                },
+                new UserBasicInfoDto
+                {
+                    Id = 3,
+                    Name = "User #3"
+                },
+                new UserBasicInfoDto
+                {
+                    Id = 4,
+                    Name = "User #4"
+                },
 
-            return _desks.Where(e => e.Id == id).FirstOrDefault();
+            };
+
+            return _users;
         }
+
+
 
         public async Task<bool> DeleteEntity(int id, EntityType type)
         {

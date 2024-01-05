@@ -13,12 +13,12 @@ namespace WPFDeskManager.ViewModels
 {
     public class EditDeskVM : EntityWindowBase
     {
-        private Desk _desk;
+        private Desk _desk = new Desk();
         private string _cancelButtonContent;
         private ObservableCollection<RoomBasicInfoDto> _rooms;
         private ObservableCollection<DeskStatusDto> _statuses;
-        private RoomBasicInfoDto _selectedRoom;
-        private DeskStatusDto _selectedStatus;
+        private RoomBasicInfoDto _selectedRoom = new RoomBasicInfoDto();
+        private DeskStatusDto _selectedStatus = new DeskStatusDto();
 
         public Desk Desk
         {
@@ -107,11 +107,21 @@ namespace WPFDeskManager.ViewModels
 
         private void ChangeSelectedRoom()
         {
+            if (Desk is null || SelectedRoom is null)
+            {
+                return;
+            }
+
             Desk.RoomName = SelectedRoom.Name;
             Desk.RoomId = SelectedRoom.Id;
         }
         private void ChangeSelectedStatus()
-        {
+        { 
+            if(Desk is null || SelectedStatus is null)
+            {
+                return;
+            }
+
             Desk.StatusName = SelectedStatus.Name;
             Desk.StatusId = SelectedStatus.Id;
         }

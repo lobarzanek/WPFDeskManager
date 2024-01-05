@@ -28,6 +28,10 @@
         <view:EditDesk />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AddItemVM}">
+        <view:AddItem />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:DeleteEntityVM}">
         <view:DeleteEntity />
     </DataTemplate>
