@@ -368,7 +368,7 @@ namespace WPFDeskManager.Data
             return _desks.Where(e => e.Id == id).FirstOrDefault();
         }
 
-        public bool DeleteEntity(int id, EntityType type)
+        public async Task<bool> DeleteEntity(int id, EntityType type)
         {
             switch (type)
             {   

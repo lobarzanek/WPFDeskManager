@@ -52,7 +52,7 @@ namespace WPFDeskManager.ViewModels
             try
             {
                 await Task.Delay(2000);
-                _restService.DeleteEntity(EntityId, EntityType);
+                await _restService.DeleteEntity(EntityId, EntityType);
                 MessageBox.Show("Deleted");
             }
             catch (Exception ex)
