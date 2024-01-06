@@ -176,7 +176,7 @@ namespace WPFDeskManager.Data
 
             return _buildings;
         }
-        public async Task<Building> GetBuildingById(int id)
+        public async Task<Building> GetBuildingByIdAsync(int id)
         {
             await Task.Delay(300);
 
@@ -189,7 +189,7 @@ namespace WPFDeskManager.Data
             await Task.Delay(2000);
             return true;
         }
-        public async Task<bool> UpdateBuilding(Building building)
+        public async Task<bool> UpdateBuildingAsync(Building building)
         {
             await Task.Delay(300);
 

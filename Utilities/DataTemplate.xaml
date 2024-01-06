@@ -11,6 +11,10 @@
     <DataTemplate DataType="{x:Type vm:ItemsVM}">
         <view:Items />
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:BuildingsVM}">
+        <view:Buildings />
+    </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:DeskStatusesVM}">
         <view:DeskStatuses />

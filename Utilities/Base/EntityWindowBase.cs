@@ -15,10 +15,16 @@ namespace WPFDeskManager.Utilities.Base
     public abstract class EntityWindowBase : ViewModelBase
     {
         public readonly RestService _restService = new RestService();
+        private string _cancelButtonContent;
 
         public ICommand EntityButtonCommand { get; set; }
         public ICommand CloseButtonCommand { get; set; }
         public string EntityButtonContent { get; set; }
+        public string CancelButtonContent
+        {
+            get { return _cancelButtonContent; }
+            set { _cancelButtonContent = value; OnPropertyChanged(); }
+        }
 
         public EntityWindowBase()
         {
