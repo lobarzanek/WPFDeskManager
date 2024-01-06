@@ -42,6 +42,27 @@ namespace WPFDeskManager.Data
                 };
             }
         }
+        public static ObservableCollection<RoleComboBox> Roles
+        {
+            get
+            {
+                return new ObservableCollection<RoleComboBox>
+                {
+                    new RoleComboBox
+                    {
+                        Id= 0,
+                        Name = "Admin",
+                        Role = Role.Admin
+                    },
+                    new RoleComboBox
+                    {
+                        Id= 1,
+                        Name = "User",
+                        Role = Role.User
+                    },
+                };
+            }
+        }
         public static int CurrentEntityId { get; set; }
     }
 }

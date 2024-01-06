@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFDeskManager.Models.DTO
+namespace WPFDeskManager.Models
 {
     public class User
     {
@@ -45,7 +45,7 @@ namespace WPFDeskManager.Models.DTO
         /// <summary>
         /// Gets or sets the value of team name.
         /// </summary>
-        public int? TeamName { get; set; }
+        public string? TeamName { get; set; }
 
         #endregion
     }

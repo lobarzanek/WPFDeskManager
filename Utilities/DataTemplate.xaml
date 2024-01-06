@@ -20,44 +20,16 @@
         <view:DeskStatuses />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:AddDeskStatusVM}">
-        <view:AddDeskStatus />
-    </DataTemplate>
-    
-    <DataTemplate DataType="{x:Type vm:EditDeskStatusVM}">
-        <view:EditDeskStatus />
-    </DataTemplate>
-
     <DataTemplate DataType="{x:Type vm:DesksVM}">
         <view:Desks />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:AddDeskVM}">
-        <view:AddDesk />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:ShowDeskVM}">
-        <view:ShowDesk />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:EditDeskVM}">
-        <view:EditDesk />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:FloorsVM}">
         <view:Floors />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ShowFloorVM}">
-        <view:ShowFloor />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:AddItemVM}">
-        <view:AddItem />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:EditItemVM}">
-        <view:EditItem />
+    <DataTemplate DataType="{x:Type vm:UsersVM}">
+        <view:Users />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:DeleteEntityVM}">

@@ -11,8 +11,8 @@ namespace WPFDeskManager.Models
     /// </summary>
     public enum Role
     {
-        Admin = 1,
-        User = 2,
+        Admin = 0,
+        User = 1,
     }
 
     /// <summary>

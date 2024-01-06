@@ -720,7 +720,8 @@ namespace WPFDeskManager.Data
                     LastName = "ln #1",
                     Login = "Login #1",
                     RoleId = Role.User,
-                    TeamId = 1
+                    TeamId = 1,
+                    TeamName = "Team #1",
                 },
                 new User()
                 {
@@ -729,7 +730,8 @@ namespace WPFDeskManager.Data
                     LastName = "ln #2",
                     Login = "Login #2",
                     RoleId = Role.User,
-                    TeamId = 1
+                    TeamId = 1,
+                    TeamName = "Team #1",
                 },
                 new User()
                 {
@@ -738,7 +740,8 @@ namespace WPFDeskManager.Data
                     LastName = "ln #3",
                     Login = "Login #3",
                     RoleId = Role.User,
-                    TeamId = 1
+                    TeamId = 1,
+                    TeamName = "Team #1",
                 },
                 new User()
                 {
@@ -747,7 +750,8 @@ namespace WPFDeskManager.Data
                     LastName = "ln #4",
                     Login = "Login #4",
                     RoleId = Role.User,
-                    TeamId = 2
+                    TeamId = 2,
+                    TeamName = "Team #2",
                 },
                 new User()
                 {
@@ -756,7 +760,8 @@ namespace WPFDeskManager.Data
                     LastName = "ln #5",
                     Login = "Login #5",
                     RoleId = Role.User,
-                    TeamId = 2
+                    TeamId = 2,
+                    TeamName = "Team #2",
                 },
 
             };
