@@ -12,6 +12,18 @@
         <view:Items />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:DeskStatusesVM}">
+        <view:DeskStatuses />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AddDeskStatusVM}">
+        <view:AddDeskStatus />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:EditDeskStatusVM}">
+        <view:EditDeskStatus />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:DesksVM}">
         <view:Desks />
     </DataTemplate>

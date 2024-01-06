@@ -274,7 +274,7 @@ namespace WPFDeskManager.Data
 
             return _statuses;
         }
-        public async Task<DeskStatus> GetDeskStatusById(int id)
+        public async Task<DeskStatus> GetDeskStatusByIdAsync(int id)
         {
             await Task.Delay(300);
 
@@ -287,7 +287,7 @@ namespace WPFDeskManager.Data
             await Task.Delay(2000);
             return true;
         }
-        public async Task<bool> UpdateDeskStatus(DeskStatus status)
+        public async Task<bool> UpdateDeskStatusAsync(DeskStatus status)
         {
             await Task.Delay(300);
 

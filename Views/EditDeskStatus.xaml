@@ -1,0 +1,106 @@
+﻿<Window x:Class="WPFDeskManager.Views.EditDeskStatus"
+        x:Name="EditDeskStatusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDeskManager.Views"
+        xmlns:vm="clr-namespace:WPFDeskManager.ViewModels" 
+        xmlns:uc="clr-namespace:WPFDeskManager.Utilities.Converters" 
+        xmlns:u="clr-namespace:WPFDeskManager.Utilities"
+        mc:Ignorable="d"
+        Title="EditDeskStatus" Height="350" Width="450">
+
+    <Window.DataContext>
+        <vm:EditDeskStatusVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        <uc:InverseBooleanToVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid 
+               Style="{StaticResource LoadingGrid}"
+               >
+                <u:LoadingControll 
+                        Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}" />
+            </Grid>
+        </Grid>
+
+        <Grid
+            Visibility="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="112*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label 
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="ID :"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowValueLabel}"
+                Content="{Binding DeskStatus.Id}"
+                />
+
+            <Label 
+                Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource EntityWindowDescriptionLabel}"
+                Content="Nazwa :"/>
+
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource EntityWindowTextBox}"
+                Text="{Binding DeskStatus.Name}"                 
+                />
+           
+
+            <Button 
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Content="{Binding EntityButtonContent}" 
+                Style="{StaticResource EntityWindowButton}" 
+                Command="{Binding EntityButtonCommand}"
+                CommandParameter="{Binding ElementName=EditDeskStatusWindow}"
+                Margin="0,0,0,0"
+                />
+
+            <Button 
+                Grid.Row="4"
+                Grid.Column="2"
+                Content="{Binding CancelButtonContent}" 
+                Style="{StaticResource EntityWindowButton}" 
+                Command="{Binding CloseButtonCommand}"
+                CommandParameter="{Binding ElementName=EditDeskStatusWindow}"
+                Margin="0,0,0,0"
+                />
+        </Grid>
+    </Grid>
+</Window>

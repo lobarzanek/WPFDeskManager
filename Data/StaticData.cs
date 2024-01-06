@@ -42,6 +42,6 @@ namespace WPFDeskManager.Data
                 };
             }
         }
-        public static int CurrentEntityId;
+        public static int CurrentEntityId { get; set; }
     }
 }

@@ -85,7 +85,7 @@ namespace WPFDeskManager.ViewModels
         private void Home(object obj) => CurrentView = new HomeVM();
         private void Items(object obj) => CurrentView = new ItemsVM();
         private void Desks(object obj) => CurrentView = new DesksVM();
-        private void DeskStatus(object obj) => CurrentView = new DeskStatusVM();
+        private void DeskStatus(object obj) => CurrentView = new DeskStatusesVM();
         private void Floors(object obj) => CurrentView = new FloorsVM();
         private void Buildings(object obj) => CurrentView = new BuildingsVM();
         private void Users(object obj) => CurrentView = new UsersVM();

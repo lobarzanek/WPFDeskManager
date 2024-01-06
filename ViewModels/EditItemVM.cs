@@ -78,7 +78,7 @@ namespace WPFDeskManager.ViewModels
         public string CancelButtonContent
         {
             get { return _cancelButtonContent; }
-            set { _cancelButtonContent = value; OnPropertyChanged(); OnPropertyChanged(); }
+            set { _cancelButtonContent = value; OnPropertyChanged(); }
         }
 
         public override void SetWindowData()
@@ -131,10 +131,10 @@ namespace WPFDeskManager.ViewModels
 
         public override void EntityButtonMethod(object obj)
         {
-            EditDeskAsync(obj);
+            EditItemAsync(obj);
         }
 
-        private async Task EditDeskAsync(object obj)
+        private async Task EditItemAsync(object obj)
         {
             
             this.IsLoading = true;

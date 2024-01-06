@@ -51,11 +51,6 @@ namespace WPFDeskManager.ViewModels
             set { _ownerTableHeader = value; OnPropertyChanged(); }
         }
 
-        public ItemsVM()
-        {
-            Initialize();
-        }
-
         public override void SetWindowData()
         {
             NameTableHeader = "Nazwa";
