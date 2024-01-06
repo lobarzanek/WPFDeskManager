@@ -32,6 +32,10 @@
         <view:AddItem />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:EditItemVM}">
+        <view:EditItem />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:DeleteEntityVM}">
         <view:DeleteEntity />
     </DataTemplate>

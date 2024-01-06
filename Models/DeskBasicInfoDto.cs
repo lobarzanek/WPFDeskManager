@@ -13,12 +13,12 @@ namespace WPFDeskManager.Models
         /// <summary>
         /// Gets or sets the ID value of desk.
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name value of desk.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         #endregion
     }

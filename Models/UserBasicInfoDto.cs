@@ -15,12 +15,12 @@ namespace WPFDeskManager.Models
         /// <summary>
         /// Gets or sets the ID value of user.
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or sets the login value of user.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         #endregion
     }

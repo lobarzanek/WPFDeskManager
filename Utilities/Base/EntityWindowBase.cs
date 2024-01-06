@@ -20,17 +20,10 @@ namespace WPFDeskManager.Utilities.Base
         public ICommand CloseButtonCommand { get; set; }
         public string EntityButtonContent { get; set; }
 
-
         public EntityWindowBase()
-        {
-            Initialize();
-        }
-
-        public override void Initialize()
         {
             EntityButtonCommand = new RelayCommand(EntityButtonMethod, CanExecutableEntityButtonMethod);
             CloseButtonCommand = new RelayCommand(CloseButtonMethod, CanExecutableCloseButtonMethod);
-            base.Initialize();
         }
 
         public virtual bool CanExecutableEntityButtonMethod(object arg)

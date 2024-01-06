@@ -27,16 +27,6 @@ namespace WPFDeskManager.ViewModels
             set { _desks = value; OnPropertyChanged(); } 
         }
 
-        public DesksVM()
-        {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            base.Initialize();
-        }
-
         public override async Task LoadDataAsync()
         {
             IsLoading = true;

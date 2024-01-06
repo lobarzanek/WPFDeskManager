@@ -25,149 +25,91 @@ namespace WPFDeskManager.Data
                 new Item()
                 {
                     Id = 1,
-                    Name = "Mouse#1",
+                    Name = "Mouse #1",
                     AddDate = new DateTime(2023, 12, 21, 5, 10, 20),
                     SerialNumber = "abc123def456",
                     Status = ItemStatus.Free,
                     Type = ItemType.Mouse,
                     OwnerId = 1,
-                    OwnerName = "John",
+                    OwnerName = "User #1",
                     BrandId = 1,
-                    BrandName = "Asus",
+                    BrandName = "Brand #1",
                     DeskId = null,
                     DeskName = null,
                 },
                 new Item()
                 {
                     Id = 2,
-                    Name = "Mouse#2",
+                    Name = "Mouse #2",
                     AddDate = new DateTime(2023, 12, 22, 6, 30, 28),
                     SerialNumber = "m8c32nac09c",
                     Status = ItemStatus.Used,
                     Type = ItemType.Mouse,
                     OwnerId = 2,
-                    OwnerName = "Alice",
+                    OwnerName = "User #2",
                     BrandId = 2,
-                    BrandName = "Razer",
+                    BrandName = "Brand #2",
                     DeskId = 1,
-                    DeskName = "Desk#1",
+                    DeskName = "Desk #1",
                 },
                 new Item()
                 {
                     Id = 3,
-                    Name = "keyboard#1",
+                    Name = "Keyboard #3",
                     AddDate = new DateTime(2023, 12, 22, 8, 30, 28),
                     SerialNumber = "nc8cqfhd9q",
                     Status = ItemStatus.Used,
                     Type = ItemType.Keyboard,
                     OwnerId = 2,
-                    OwnerName = "Alice",
+                    OwnerName = "User #2",
                     BrandId = 2,
-                    BrandName = "Razer",
+                    BrandName = "Brand #2",
                     DeskId = 1,
-                    DeskName = "Desk#1",
+                    DeskName = "Desk #1",
                 },new Item()
                 {
                     Id = 4,
-                    Name = "Mouse#1",
+                    Name = "Mouse #4",
                     AddDate = new DateTime(2023, 12, 21, 5, 10, 20),
                     SerialNumber = "abc123def456",
                     Status = ItemStatus.Free,
                     Type = ItemType.Mouse,
                     OwnerId = 1,
-                    OwnerName = "John",
+                    OwnerName = "User #1",
                     BrandId = 1,
-                    BrandName = "Asus",
+                    BrandName = "Brand #1",
                     DeskId = null,
                     DeskName = null,
                 },
                 new Item()
                 {
                     Id = 5,
-                    Name = "Mouse#2",
+                    Name = "Mouse #5",
                     AddDate = new DateTime(2023, 12, 22, 6, 30, 28),
                     SerialNumber = "m8c32nac09c",
                     Status = ItemStatus.Used,
                     Type = ItemType.Mouse,
                     OwnerId = 2,
-                    OwnerName = "Alice",
+                    OwnerName = "User #2",
                     BrandId = 2,
-                    BrandName = "Razer",
+                    BrandName = "Brand #2",
                     DeskId = 1,
-                    DeskName = "Desk#1",
+                    DeskName = "Desk #1",
                 },
                 new Item()
                 {
                     Id = 6,
-                    Name = "keyboard#1",
+                    Name = "Keyboard #6",
                     AddDate = new DateTime(2023, 12, 22, 8, 30, 28),
                     SerialNumber = "nc8cqfhd9q",
                     Status = ItemStatus.Used,
                     Type = ItemType.Keyboard,
                     OwnerId = 2,
-                    OwnerName = "Alice",
+                    OwnerName = "User #2",
                     BrandId = 2,
-                    BrandName = "Razer",
+                    BrandName = "Brand #2",
                     DeskId = 1,
-                    DeskName = "Desk#1",
-                },new Item()
-                {
-                    Id = 7,
-                    Name = "Mouse#1",
-                    AddDate = new DateTime(2023, 12, 21, 5, 10, 20),
-                    SerialNumber = "abc123def456",
-                    Status = ItemStatus.Free,
-                    Type = ItemType.Mouse,
-                    OwnerId = 1,
-                    OwnerName = "John",
-                    BrandId = 1,
-                    BrandName = "Asus",
-                    DeskId = null,
-                    DeskName = null,
-                },
-                new Item()
-                {
-                    Id = 8,
-                    Name = "Mouse#2",
-                    AddDate = new DateTime(2023, 12, 22, 6, 30, 28),
-                    SerialNumber = "m8c32nac09c",
-                    Status = ItemStatus.Used,
-                    Type = ItemType.Mouse,
-                    OwnerId = 2,
-                    OwnerName = "Alice",
-                    BrandId = 2,
-                    BrandName = "Razer",
-                    DeskId = 1,
-                    DeskName = "Desk#1",
-                },
-                new Item()
-                {
-                    Id = 9,
-                    Name = "keyboard#1",
-                    AddDate = new DateTime(2023, 12, 22, 8, 30, 28),
-                    SerialNumber = "nc8cqfhd9q",
-                    Status = ItemStatus.Used,
-                    Type = ItemType.Keyboard,
-                    OwnerId = 2,
-                    OwnerName = "Alice",
-                    BrandId = 2,
-                    BrandName = "Razer",
-                    DeskId = 1,
-                    DeskName = "Desk#1",
-                },new Item()
-                {
-                    Id = 10,
-                    Name = "Mouse#1",
-                    AddDate = new DateTime(2023, 12, 21, 5, 10, 20),
-                    SerialNumber = "abc123def456",
-                    Status = ItemStatus.Free,
-                    Type = ItemType.Mouse,
-                    OwnerId = 1,
-                    OwnerName = "John",
-                    BrandId = 1,
-                    BrandName = "Asus",
-                    DeskId = null,
-                    DeskName = null,
+                    DeskName = "Desk #1",
                 }
             };
 
@@ -175,6 +117,7 @@ namespace WPFDeskManager.Data
         }
         public async Task<Item> GetItemByIdAsync(int id)
         {
+            await Task.Delay(1000);
             var _items = GetItemsAsync();
 
             return _items.Where(e => e.Id == id).FirstOrDefault();
@@ -182,6 +125,11 @@ namespace WPFDeskManager.Data
         public async Task<bool> AddItemAsync(AddItemDto addItemDto)
         {
             await Task.Delay(2000);
+            return true;
+        }
+        public async Task<bool> UpdateItemAsync(UpdateItemDto updateItemDto)
+        {
+            await Task.Delay(1000);
             return true;
         }
 
@@ -310,7 +258,8 @@ namespace WPFDeskManager.Data
             return _desks;
         }
         public async Task<ObservableCollection<DeskBasicInfoDto>> GetDesksBasicInfoAsync()
-        {            
+        {   
+            await Task.Delay(1000);
             var _desks = new ObservableCollection<DeskBasicInfoDto>()
             {
                 new DeskBasicInfoDto
@@ -423,6 +372,7 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Brand>> GetBrandsAsync()
         {
+            await Task.Delay(1000);
             var _brands = new ObservableCollection<Brand>()
             {
                 new Brand
@@ -453,6 +403,7 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<UserBasicInfoDto>> GetUsersBasicInfoAsync()
         {
+            await Task.Delay(1000);
             var _users = new ObservableCollection<UserBasicInfoDto>()
             {
                 new UserBasicInfoDto
