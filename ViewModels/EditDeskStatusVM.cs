@@ -14,8 +14,7 @@ namespace WPFDeskManager.ViewModels
 {
     public class EditDeskStatusVM : EntityWindowBase
     {
-        private DeskStatus _deskStatus;
-        private string _cancelButtonContent;
+        private DeskStatus _deskStatus = new DeskStatus();
 
         public DeskStatus DeskStatus
         {
@@ -29,11 +28,6 @@ namespace WPFDeskManager.ViewModels
                 return _deskStatus;
             }
             set { _deskStatus = value; OnPropertyChanged(); }
-        }
-        public string CancelButtonContent
-        {
-            get { return _cancelButtonContent; }
-            set { _cancelButtonContent = value; OnPropertyChanged(); }
         }
         public override void SetWindowData()
         {

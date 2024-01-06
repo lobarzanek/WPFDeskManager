@@ -12,7 +12,7 @@ namespace WPFDeskManager.ViewModels
 {
     public class ShowBuildingVM : EntityWindowBase
     {
-        private Building _building;
+        private Building _building = new Building();
 
         public Building Building
         {

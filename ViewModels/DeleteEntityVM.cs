@@ -13,15 +13,9 @@ namespace WPFDeskManager.ViewModels
 {
     public class DeleteEntityVM : EntityWindowBase
     {
-        private string _cancelButtonContent;
-        private string _entityName;
+        private string _entityName = "";
         private EntityType _entityType;
 
-        public string CancelButtonContent
-        {
-            get { return _cancelButtonContent; }
-            set { _cancelButtonContent = value; OnPropertyChanged(); }
-        }
         public string EntityName
         {
             get { return _entityName; }

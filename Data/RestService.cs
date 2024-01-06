@@ -869,19 +869,20 @@ namespace WPFDeskManager.Data
 
         public async Task<bool> DeleteEntity(int id, EntityType type)
         {
+            await Task.Delay(300);
             switch (type)
-            {   
+            {
                 case EntityType.Building:
                 case EntityType.Desk:
                 case EntityType.DeskStatus:
                 case EntityType.Floor:
                 case EntityType.Room:
                 case EntityType.User:
+                case EntityType.Item:
                     return true;
 
                 case EntityType.Unknown:
                     return false;
-
                 default: return false;
             }
         }

@@ -12,7 +12,7 @@ namespace WPFDeskManager.ViewModels
 {
     public class ShowFloorVM : EntityWindowBase
     {
-        private Floor _floor;
+        private Floor _floor = new();
 
         public Floor Floor
         {

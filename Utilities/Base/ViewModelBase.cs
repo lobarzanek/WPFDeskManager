@@ -12,11 +12,11 @@ namespace WPFDeskManager.Utilities.Base
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
-        private bool _isLoading;
-        private string _addButtonContent;
+        private bool _isLoading = false;
+        private string _addButtonContent = "";
         private int _entityId;
-        private string _pageTitle;
-        public readonly RestService _restService = new RestService();
+        private string _pageTitle = "";
+        public readonly RestService _restService = new();
 
 
         public event PropertyChangedEventHandler PropertyChanged;

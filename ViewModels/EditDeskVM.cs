@@ -14,9 +14,8 @@ namespace WPFDeskManager.ViewModels
     public class EditDeskVM : EntityWindowBase
     {
         private Desk _desk = new Desk();
-        private string _cancelButtonContent;
-        private ObservableCollection<RoomBasicInfoDto> _rooms;
-        private ObservableCollection<DeskStatus> _statuses;
+        private ObservableCollection<RoomBasicInfoDto> _rooms = new ObservableCollection<RoomBasicInfoDto>();
+        private ObservableCollection<DeskStatus> _statuses = new ObservableCollection<DeskStatus>();
         private RoomBasicInfoDto _selectedRoom = new RoomBasicInfoDto();
         private DeskStatus _selectedStatus = new DeskStatus();
 
@@ -24,11 +23,6 @@ namespace WPFDeskManager.ViewModels
         {
             get { return _desk; }
             set { _desk = value; OnPropertyChanged(); }
-        }
-        public string CancelButtonContent
-        {
-            get { return _cancelButtonContent; }
-            set { _cancelButtonContent = value; OnPropertyChanged(); }
         }
         public ObservableCollection<RoomBasicInfoDto> Rooms
         {

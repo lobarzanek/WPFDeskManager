@@ -15,9 +15,9 @@ namespace WPFDeskManager.ViewModels
 {
     public class AddFloorVM : EntityWindowBase
     {
-        private AddFloorDto _floor;
-        private ObservableCollection<Building> _buildings;
-        private Building _selectedBuilding;
+        private AddFloorDto _floor = new AddFloorDto();
+        private ObservableCollection<Building> _buildings = new ObservableCollection<Building>();
+        private Building _selectedBuilding = new Building();
 
         public AddFloorDto Floor
         {

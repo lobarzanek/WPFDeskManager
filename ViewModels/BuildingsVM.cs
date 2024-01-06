@@ -15,8 +15,8 @@ namespace WPFDeskManager.ViewModels
 {
     public class BuildingsVM : ViewModelBase
     {
-        private ObservableCollection<Building> _buildings;
-        private string _nameTableHeader;
+        private ObservableCollection<Building> _buildings = new ObservableCollection<Building>();
+        private string _nameTableHeader = "";
 
         public ObservableCollection<Building> Buildings
         {

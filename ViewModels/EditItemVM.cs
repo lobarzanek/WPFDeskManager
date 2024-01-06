@@ -13,23 +13,19 @@ namespace WPFDeskManager.ViewModels
 {
     public class EditItemVM : EntityWindowBase
     {
-        private UpdateItemDto _item;
-        private ObservableCollection<Brand> _brands;
-        private ObservableCollection<DeskBasicInfoDto> _desks;
-        private ObservableCollection<UserBasicInfoDto> _users;
-        private ObservableCollection<ItemTypeComboBox> _types;
-        private Brand _selectedBrand = new Brand();
-        private DeskBasicInfoDto _selectedDesk = new DeskBasicInfoDto();
-        private UserBasicInfoDto _selectedUser = new UserBasicInfoDto();
-        private ItemTypeComboBox _selectedType = new ItemTypeComboBox();
-        private string _cancelButtonContent;
+        private UpdateItemDto _item = new();
+        private ObservableCollection<Brand> _brands = new();
+        private ObservableCollection<DeskBasicInfoDto> _desks = new();
+        private ObservableCollection<UserBasicInfoDto> _users = new();
+        private ObservableCollection<ItemTypeComboBox> _types = StaticData.ItemTypes;
+        private Brand _selectedBrand = new();
+        private DeskBasicInfoDto _selectedDesk = new();
+        private UserBasicInfoDto _selectedUser = new();
+        private ItemTypeComboBox _selectedType = new();
 
         public UpdateItemDto Item
         {
-            get { if (_item is null)
-                    {
-                        _item = new UpdateItemDto();
-                    }
+            get { _item ??= new UpdateItemDto();
 
                     return _item; 
                 }
@@ -75,17 +71,11 @@ namespace WPFDeskManager.ViewModels
             get { return _selectedType; }
             set { _selectedType = value; ChangeSelectedType(); OnPropertyChanged(); }
         }
-        public string CancelButtonContent
-        {
-            get { return _cancelButtonContent; }
-            set { _cancelButtonContent = value; OnPropertyChanged(); }
-        }
 
         public override void SetWindowData()
         {
             EntityButtonContent = "OK";
             CancelButtonContent = "Anuluj";
-            Types = StaticData.ItemTypes;
         }
 
         public override async Task LoadDataAsync()

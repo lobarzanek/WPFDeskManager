@@ -15,10 +15,9 @@ namespace WPFDeskManager.ViewModels
 {
     public class EditFloorVM : EntityWindowBase
     {
-        private UpdateFloorDto _floor;
-        private ObservableCollection<Building> _buildings;
-        private Building _selectedBuilding;
-        private string _cancelButtonContent;
+        private UpdateFloorDto _floor = new UpdateFloorDto();
+        private ObservableCollection<Building> _buildings = new ObservableCollection<Building>();
+        private Building _selectedBuilding = new Building();
 
         public UpdateFloorDto Floor
         {
@@ -43,11 +42,7 @@ namespace WPFDeskManager.ViewModels
             get { return _selectedBuilding; }
             set { _selectedBuilding = value; ChangeSelectedBuilding(); OnPropertyChanged(); }
         }
-        public string CancelButtonContent
-        {
-            get { return _cancelButtonContent; }
-            set { _cancelButtonContent = value; OnPropertyChanged(); }
-        }
+
         public override void SetWindowData()
         {
             EntityButtonContent = "OK";
