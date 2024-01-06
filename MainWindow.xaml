@@ -92,7 +92,7 @@
                 </Menu:Btn>
 
                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                    Command="{Binding FloorsButtonContent}">
+                    Command="{Binding FloorsCommand}">
                     <Label Content="{Binding FloorsButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>

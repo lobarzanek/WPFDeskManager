@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using WPFDeskManager.Data;
+using WPFDeskManager.Models;
+using WPFDeskManager.Models.DTO;
+using WPFDeskManager.Utilities.Base;
+using WPFDeskManager.Views;
+
+namespace WPFDeskManager.ViewModels
+{
+    public class AddFloorVM : EntityWindowBase
+    {
+        private AddFloorDto _floor;
+        private ObservableCollection<Building> _buildings;
+        private Building _selectedBuilding;
+
+        public AddFloorDto Floor
+        {
+            get { return _floor; }
+            set { _floor = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<Building> Buildings
+        {
+            get { return _buildings; }
+            set { _buildings = value; OnPropertyChanged(); }
+        }
+        public Building SelectedBuilding
+        {
+            get { return _selectedBuilding; }
+            set { _selectedBuilding = value; ChangeSelectedBuilding(); OnPropertyChanged(); }
+        }
+        public override void SetWindowData()
+        {
+            Floor = new AddFloorDto();
+            EntityButtonContent = "Dodaj";
+        }
+        public override async Task LoadDataAsync()
+        {
+            this.IsLoading = true;
+
+            try
+            {
+                Buildings = await _restService.GetBuildingsAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                this.IsLoading = false;
+            }
+        }
+        public override void EntityButtonMethod(object obj)
+        {
+            AddFloorAsync();
+        }
+
+        private async Task AddFloorAsync()
+        {
+            bool result = false;
+
+            try
+            {
+                this.IsLoading = true;
+                result = await _restService.AddFloorAsync(Floor);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                this.IsLoading = !result;
+                if(result)
+                {
+                    MessageBox.Show("Added");
+                }
+            }
+        }
+        private void ChangeSelectedBuilding()
+        {
+            Floor.BuildingId = SelectedBuilding.Id;
+        }
+    }
+}

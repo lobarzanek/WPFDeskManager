@@ -582,7 +582,7 @@ namespace WPFDeskManager.Data
             await Task.Delay(2000);
             return true;
         }
-        public async Task<bool> UpdateDeskAsync(UpdateFloorDto floor)
+        public async Task<bool> UpdateFloorAsync(UpdateFloorDto floor)
         {
             await Task.Delay(1000);
             return true;

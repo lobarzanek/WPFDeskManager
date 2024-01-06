@@ -40,6 +40,14 @@
         <view:EditDesk />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:FloorsVM}">
+        <view:Floors />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ShowFloorVM}">
+        <view:ShowFloor />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:AddItemVM}">
         <view:AddItem />
     </DataTemplate>
