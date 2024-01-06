@@ -332,6 +332,11 @@ namespace WPFDeskManager.Data
 
             return _desks.Where(e => e.Id == id).FirstOrDefault();
         }
+        public async Task<bool> UpdateDeskAsync(Desk desk)
+        {
+            await Task.Delay(1000);
+            return true;
+        }
 
         public async Task<ObservableCollection<RoomBasicInfoDto>> GetRoomsBasicInfoAsync()
         {

@@ -91,7 +91,7 @@ namespace WPFDeskManager.ViewModels
             try
             {
                 this.IsLoading = true;
-                await Task.Delay(2000);
+                await _restService.UpdateDeskAsync(Desk);
             }
             catch (Exception ex)
             {
