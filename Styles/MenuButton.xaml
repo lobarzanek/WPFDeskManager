@@ -18,7 +18,7 @@
 
                     <Border
                             x:Name="borderBg"
-                            Height="70"
+                            Height="55"
                             Width="260"
                             BorderThickness="0">
 
@@ -31,7 +31,7 @@
                         <Grid>
 
                             <Border x:Name="ActiveBar"
-                                    Height="40"
+                                    Height="35"
                                     Width="4"
                                     Margin="10,0,0,0"
                                     HorizontalAlignment="Left"

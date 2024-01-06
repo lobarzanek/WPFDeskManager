@@ -69,34 +69,55 @@
                 <Menu:Btn Style="{StaticResource BtnStyle}"
                           IsChecked="True"
                           Command="{Binding HomeCommand}">
-                    <Label Content="HOME"
+                    <Label Content="{Binding HomeButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
                 <Menu:Btn Style="{StaticResource BtnStyle}"
                           Command="{Binding ItemsCommand}">
-                    <Label Content="WYPOSAŻENIE"
+                    <Label Content="{Binding ItemsButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
                 <Menu:Btn Style="{StaticResource BtnStyle}"
                           Command="{Binding DesksCommand}">
-                    <Label Content="BIURKA"
+                    <Label Content="{Binding DesksButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
-                <Menu:Btn Style="{StaticResource BtnStyle}">
-                    <Label Content="PIĘTRA"
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                    Command="{Binding DesksStatusCommand}">
+                    <Label Content="{Binding DeskStatusButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
-                <Menu:Btn Style="{StaticResource BtnStyle}">
-                    <Label Content="BUDYNKI"
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                    Command="{Binding FloorsButtonContent}">
+                    <Label Content="{Binding FloorsButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
-                <Menu:Btn Style="{StaticResource BtnStyle}">
-                    <Label Content="UŻYTKOWNICY"
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding BuildingsCommand}">
+                    <Label Content="{Binding BuildingsButtonContent}"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding UsersCommand}">
+                    <Label Content="{Binding UsersButtonContent}"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding BrandsCommand}">
+                    <Label Content="{Binding BrandsButtonContent}"
+                        Style="{StaticResource MenuBtnText}" />
+                </Menu:Btn>
+
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding TeamsCommand}">
+                    <Label Content="{Binding TeamsButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 
