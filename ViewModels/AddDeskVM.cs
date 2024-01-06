@@ -19,9 +19,9 @@ namespace WPFDeskManager.ViewModels
     {
         private AddDeskDto _addDeskDto;
         private ObservableCollection<RoomBasicInfoDto> _rooms;
-        private ObservableCollection<DeskStatusDto> _statuses;
+        private ObservableCollection<DeskStatus> _statuses;
         private RoomBasicInfoDto _selectedRoom;
-        private DeskStatusDto _selectedStatus;
+        private DeskStatus _selectedStatus;
 
         public AddDeskDto AddDeskDto
         {
@@ -33,7 +33,7 @@ namespace WPFDeskManager.ViewModels
             get { return _rooms; }
             set { _rooms = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<DeskStatusDto> Statuses
+        public ObservableCollection<DeskStatus> Statuses
         {
             get { return _statuses; }
             set { _statuses = value; OnPropertyChanged(); }
@@ -44,7 +44,7 @@ namespace WPFDeskManager.ViewModels
             set { _selectedRoom = value; ChangeSelectedRoom();}
         }
 
-        public DeskStatusDto SelectedStatus
+        public DeskStatus SelectedStatus
         {
             get { return _selectedStatus; }
             set { _selectedStatus = value; ChangeSelectedStatus(); }

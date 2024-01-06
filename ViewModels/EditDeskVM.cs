@@ -16,9 +16,9 @@ namespace WPFDeskManager.ViewModels
         private Desk _desk = new Desk();
         private string _cancelButtonContent;
         private ObservableCollection<RoomBasicInfoDto> _rooms;
-        private ObservableCollection<DeskStatusDto> _statuses;
+        private ObservableCollection<DeskStatus> _statuses;
         private RoomBasicInfoDto _selectedRoom = new RoomBasicInfoDto();
-        private DeskStatusDto _selectedStatus = new DeskStatusDto();
+        private DeskStatus _selectedStatus = new DeskStatus();
 
         public Desk Desk
         {
@@ -35,7 +35,7 @@ namespace WPFDeskManager.ViewModels
             get { return _rooms; }
             set { _rooms = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<DeskStatusDto> Statuses
+        public ObservableCollection<DeskStatus> Statuses
         {
             get { return _statuses; }
             set { _statuses = value; OnPropertyChanged(); }
@@ -46,7 +46,7 @@ namespace WPFDeskManager.ViewModels
             set { _selectedRoom = value; ChangeSelectedRoom(); OnPropertyChanged(); }
         }
 
-        public DeskStatusDto SelectedStatus
+        public DeskStatus SelectedStatus
         {
             get { return _selectedStatus; }
             set { _selectedStatus = value; ChangeSelectedStatus(); OnPropertyChanged(); }
@@ -115,7 +115,7 @@ namespace WPFDeskManager.ViewModels
 
             if (status != null)
             {
-                SelectedStatus = new DeskStatusDto { Id = status.Id, Name = status.Name };
+                SelectedStatus = new DeskStatus { Id = status.Id, Name = status.Name };
             }
 
             var room = Rooms.Where(r => r.Id == Desk.RoomId).FirstOrDefault();
