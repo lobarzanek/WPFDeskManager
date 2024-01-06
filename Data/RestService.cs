@@ -18,8 +18,9 @@ namespace WPFDeskManager.Data
 
         }
 
-        public ICollection<Item> GetItemsAsync()
+        public async Task<ObservableCollection<Item>> GetItemsAsync()
         {
+            await Task.Delay(500);
 
             var _items = new ObservableCollection<Item>() {
                 new Item()
@@ -117,8 +118,8 @@ namespace WPFDeskManager.Data
         }
         public async Task<Item> GetItemByIdAsync(int id)
         {
-            await Task.Delay(1000);
-            var _items = GetItemsAsync();
+            await Task.Delay(500);
+            var _items = await GetItemsAsync();
 
             return _items.Where(e => e.Id == id).FirstOrDefault();
         }
@@ -133,8 +134,10 @@ namespace WPFDeskManager.Data
             return true;
         }
 
-        public ICollection<Desk> GetDesksAsync()
+        public async Task<ObservableCollection<Desk>> GetDesksAsync()
         {
+            await Task.Delay(500);
+
             var _desks = new ObservableCollection<Desk>()
             {
                 new Desk()
@@ -325,7 +328,7 @@ namespace WPFDeskManager.Data
         {
             await Task.Delay(300);
 
-            var _desks = GetDesksAsync();
+            var _desks = await GetDesksAsync();
 
             return _desks.Where(e => e.Id == id).FirstOrDefault();
         }
@@ -437,8 +440,6 @@ namespace WPFDeskManager.Data
 
             return _users;
         }
-
-
 
         public async Task<bool> DeleteEntity(int id, EntityType type)
         {

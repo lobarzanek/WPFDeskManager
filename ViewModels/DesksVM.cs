@@ -34,7 +34,7 @@ namespace WPFDeskManager.ViewModels
             try
             {
                 await Task.Delay(2000);
-                Desks = (ObservableCollection<Desk>)_restService.GetDesksAsync();
+                Desks = await _restService.GetDesksAsync();
                 PageTitle = $"Desks: {Desks.Count}";
                 AddButtonContent = "Dodaj biurko";
 

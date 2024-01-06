@@ -71,8 +71,7 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
-                Items = (ObservableCollection<Item>)_restService.GetItemsAsync();
+                Items = await _restService.GetItemsAsync();
                 PageTitle = $"Wyposażenie: {Items.Count}";
                 AddButtonContent = "Dodaj wyposażenie";
 
