@@ -86,11 +86,9 @@ namespace WPFDeskManager.ViewModels
 
         public override void EditCommandExecute(object parameter)
         {
-            EditDeskVM editDeskVM = new EditDeskVM();
-            editDeskVM.EntityId = (int)parameter;
+            StaticData.CurrentEntityId = (int)parameter;
 
             EditDesk editDeskWindow = new EditDesk();
-            editDeskWindow.DataContext = editDeskVM;
             editDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             editDeskWindow.Show();
         }

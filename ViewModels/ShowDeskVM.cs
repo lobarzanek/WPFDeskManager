@@ -31,8 +31,7 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
-                Desk = _restService.GetDeskById(EntityId);
+                Desk = await _restService.GetDeskByIdAsync(EntityId);
             }
             catch (Exception ex)
             {

@@ -301,8 +301,10 @@ namespace WPFDeskManager.Data
 
             return _desks;
         }
-        public ObservableCollection<DeskStatusDto> GetDeskStatuses()
+        public async Task<ObservableCollection<DeskStatusDto>> GetDeskStatusesAsync()
         {
+            await Task.Delay(300);
+
             var _statuses = new ObservableCollection<DeskStatusDto>()
             {
                 new DeskStatusDto
@@ -319,15 +321,19 @@ namespace WPFDeskManager.Data
 
             return _statuses;
         }
-        public Desk GetDeskById(int id)
+        public async Task<Desk> GetDeskByIdAsync(int id)
         {
+            await Task.Delay(300);
+
             var _desks = GetDesksAsync();
 
             return _desks.Where(e => e.Id == id).FirstOrDefault();
         }
 
-        public ObservableCollection<RoomBasicInfoDto> GetRoomsBasicInfo()
+        public async Task<ObservableCollection<RoomBasicInfoDto>> GetRoomsBasicInfoAsync()
         {
+            await Task.Delay(300);
+
             var _rooms = new ObservableCollection<RoomBasicInfoDto>()
             {
                 new RoomBasicInfoDto

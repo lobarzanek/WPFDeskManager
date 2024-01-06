@@ -62,9 +62,8 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
-                Statuses = _restService.GetDeskStatuses();
-                Rooms = _restService.GetRoomsBasicInfo();
+                Statuses = await _restService.GetDeskStatusesAsync();
+                Rooms = await _restService.GetRoomsBasicInfoAsync();
             }
             catch (Exception ex)
             {

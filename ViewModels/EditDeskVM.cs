@@ -65,10 +65,10 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
-                Statuses = _restService.GetDeskStatuses();
-                Rooms = _restService.GetRoomsBasicInfo();
-                Desk = _restService.GetDeskById(EntityId);
+                Desk = await _restService.GetDeskByIdAsync(StaticData.CurrentEntityId);
+
+                Statuses = await _restService.GetDeskStatusesAsync();
+                Rooms = await _restService.GetRoomsBasicInfoAsync();
             }
             catch (Exception ex)
             {
@@ -104,7 +104,27 @@ namespace WPFDeskManager.ViewModels
                 MessageBox.Show($"{Desk.Name}, {Desk.RoomId}, {Desk.StatusId}");
             }
         }
+        
+        private void SetCheckboxData()
+        {
+            if(Desk is null)
+            {
+                return;
+            }
+            var status = Statuses.Where(s => s.Id == Desk.StatusId).FirstOrDefault();
 
+            if (status != null)
+            {
+                SelectedStatus = new DeskStatusDto { Id = status.Id, Name = status.Name };
+            }
+
+            var room = Rooms.Where(r => r.Id == Desk.RoomId).FirstOrDefault();
+
+            if (room != null)
+            {
+                SelectedRoom = new RoomBasicInfoDto { Id= room.Id, Name = room.Name };
+            }
+        }
         private void ChangeSelectedRoom()
         {
             if (Desk is null || SelectedRoom is null)
@@ -116,33 +136,14 @@ namespace WPFDeskManager.ViewModels
             Desk.RoomId = SelectedRoom.Id;
         }
         private void ChangeSelectedStatus()
-        { 
-            if(Desk is null || SelectedStatus is null)
+        {
+            if (Desk is null || SelectedStatus is null)
             {
                 return;
             }
 
             Desk.StatusName = SelectedStatus.Name;
             Desk.StatusId = SelectedStatus.Id;
-        }
-        private void SetCheckboxData()
-        {
-            if(Desk is null)
-            {
-                return;
-            }
-            var status = Statuses.Where(s => s.Id == Desk.StatusId).FirstOrDefault();
-            var room = Rooms.Where(r => r.Id == Desk.RoomId).FirstOrDefault();
-
-            if (status != null)
-            {
-                SelectedStatus = new DeskStatusDto { Id = status.Id, Name = status.Name };
-            }
-
-            if (room != null)
-            {
-                SelectedRoom = new RoomBasicInfoDto { Id= room.Id, Name = room.Name };
-            }
         }
     }
 }
