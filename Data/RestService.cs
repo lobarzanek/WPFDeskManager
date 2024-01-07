@@ -850,7 +850,7 @@ namespace WPFDeskManager.Data
 
             return _teams;
         }
-        public async Task<Team> GetTeamById(int id)
+        public async Task<Team> GetTeamByIdAsync(int id)
         {
             await Task.Delay(300);
 
@@ -863,7 +863,7 @@ namespace WPFDeskManager.Data
             await Task.Delay(2000);
             return true;
         }
-        public async Task<bool> UpdateTeam(Team team)
+        public async Task<bool> UpdateTeamAsync(Team team)
         {
             await Task.Delay(300);
 
@@ -884,6 +884,7 @@ namespace WPFDeskManager.Data
                 case EntityType.Room:
                 case EntityType.User:
                 case EntityType.Item:
+                case EntityType.Team:
                     return true;
 
                 case EntityType.Unknown:

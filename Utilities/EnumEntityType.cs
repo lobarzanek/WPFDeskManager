@@ -16,6 +16,7 @@ namespace WPFDeskManager.Utilities
         Floor,
         Item,
         Room,
-        User,        
+        User, 
+        Team
     }
 }

@@ -36,6 +36,10 @@
         <view:Users />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:TeamsVM}">
+        <view:Teams />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:DeleteEntityVM}">
         <view:DeleteEntity />
     </DataTemplate>
