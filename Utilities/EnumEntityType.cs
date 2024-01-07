@@ -10,6 +10,7 @@ namespace WPFDeskManager.Utilities
     {
         Unknown,
         Building,
+        Brand,
         Desk,
         DeskStatus,
         Floor,

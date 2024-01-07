@@ -16,6 +16,10 @@
         <view:Buildings />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:BrandsVM}">
+        <view:Brands />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:DeskStatusesVM}">
         <view:DeskStatuses />
     </DataTemplate>

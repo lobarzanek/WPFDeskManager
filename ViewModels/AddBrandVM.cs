@@ -4,41 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using WPFDeskManager.Models;
 using WPFDeskManager.Models.DTO;
 using WPFDeskManager.Utilities.Base;
-using WPFDeskManager.Views;
 
 namespace WPFDeskManager.ViewModels
 {
-    public class AddBuildingVM : EntityWindowBase
+    public class AddBrandVM : EntityWindowBase
     {
-        private AddBuildingDto _building;
+        private AddBrandDto _brand = new();
 
-        public AddBuildingDto Building
+        public AddBrandDto Brand
         {
-            get { return _building; }
-            set { _building = value; OnPropertyChanged(); }
+            get { return _brand; }
+            set { _brand = value; OnPropertyChanged(); }
         }
         public override void SetWindowData()
         {
-            Building = new AddBuildingDto();
             EntityButtonContent = "Dodaj";
         }
-        
+
         public override void EntityButtonMethod(object obj)
         {
-            AddBuildingAsync();
+            AddBrandAsync();
         }
 
-        private async Task AddBuildingAsync()
+        private async Task AddBrandAsync()
         {
             bool result = false;
 
             try
             {
                 this.IsLoading = true;
-                result = await _restService.AddBuildingAsync(Building);
+                result = await _restService.AddBrandAsync(Brand);
             }
             catch (Exception ex)
             {

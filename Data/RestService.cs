@@ -230,7 +230,7 @@ namespace WPFDeskManager.Data
 
             return _brands;
         }
-        public async Task<Brand> GetBrandById(int id)
+        public async Task<Brand> GetBrandByIdAsync(int id)
         {
             await Task.Delay(300);
 
@@ -243,7 +243,7 @@ namespace WPFDeskManager.Data
             await Task.Delay(2000);
             return true;
         }
-        public async Task<bool> UpdateBrand(Brand brand)
+        public async Task<bool> UpdateBrandAsync(Brand brand)
         {
             await Task.Delay(300);
 
