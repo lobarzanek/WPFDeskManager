@@ -29,7 +29,6 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
                 DeskStatus = await _restService.GetDeskStatusByIdAsync(EntityId);
             }
             catch (Exception ex)

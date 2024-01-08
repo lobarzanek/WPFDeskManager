@@ -45,7 +45,6 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
                 await _restService.DeleteEntity(EntityId, EntityType);
                 MessageBox.Show("Deleted");
             }

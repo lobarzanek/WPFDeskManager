@@ -83,7 +83,6 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
                 Brands = await _restService.GetBrandsAsync();
                 Desks = await _restService.GetDesksBasicInfoAsync();
                 Users = await _restService.GetUsersBasicInfoAsync();

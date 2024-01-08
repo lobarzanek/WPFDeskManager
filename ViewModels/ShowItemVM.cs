@@ -29,7 +29,6 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                await Task.Delay(2000);
                 Item = await _restService.GetItemByIdAsync(EntityId);
             }
             catch (Exception ex)
