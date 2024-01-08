@@ -90,11 +90,9 @@ namespace WPFDeskManager.ViewModels
 
         public override void ShowCommandExecute(object parameter)
         {
-            ShowItemVM showItemVM = new ShowItemVM();
-            showItemVM.EntityId = (int)parameter;
+            StaticData.CurrentEntityId = (int)parameter;
 
             ShowItem showItemWindow = new ShowItem();
-            showItemWindow.DataContext = showItemVM;
             showItemWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             showItemWindow.Show();
         }

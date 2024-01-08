@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFDeskManager.Data;
 using WPFDeskManager.Models;
 using WPFDeskManager.Utilities.Base;
 
@@ -29,7 +30,7 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                Item = await _restService.GetItemByIdAsync(EntityId);
+                Item = await _restService.GetItemByIdAsync(StaticData.CurrentEntityId);
             }
             catch (Exception ex)
             {
