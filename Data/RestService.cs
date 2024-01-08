@@ -26,10 +26,10 @@ namespace WPFDeskManager.Data
         private const string _deskEndpoint = "Desk";
         private const string _deskStatusEndpoint = "DeskStatus";
         private const string _floorEndpoint = "Floor";
-        private const string _ItemEndpoint = "Item";
-        private const string _RoomEndpoint = "Room";
-        private const string _TeamEndpoint = "Team";
-        private const string _UserEndpoint = "User";
+        private const string _itemEndpoint = "Item";
+        private const string _roomEndpoint = "Room";
+        private const string _teamEndpoint = "Team";
+        private const string _userEndpoint = "User";
         private readonly HttpClient _httpClient;
 
         public RestService()
@@ -41,118 +41,19 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Item>> GetItemsAsync()
         {
-            await Task.Delay(500);
-
-            var _items = new ObservableCollection<Item>() {
-                new Item()
-                {
-                    Id = 1,
-                    Name = "Mouse #1",
-                    AddDate = new DateTime(2023, 12, 21, 5, 10, 20),
-                    SerialNumber = "abc123def456",
-                    Status = ItemStatus.Free,
-                    Type = ItemType.Mouse,
-                    OwnerId = 1,
-                    OwnerName = "User #1",
-                    BrandId = 1,
-                    BrandName = "Brand #1",
-                    DeskId = null,
-                    DeskName = null,
-                },
-                new Item()
-                {
-                    Id = 2,
-                    Name = "Mouse #2",
-                    AddDate = new DateTime(2023, 12, 22, 6, 30, 28),
-                    SerialNumber = "m8c32nac09c",
-                    Status = ItemStatus.Used,
-                    Type = ItemType.Mouse,
-                    OwnerId = 2,
-                    OwnerName = "User #2",
-                    BrandId = 2,
-                    BrandName = "Brand #2",
-                    DeskId = 1,
-                    DeskName = "Desk #1",
-                },
-                new Item()
-                {
-                    Id = 3,
-                    Name = "Keyboard #3",
-                    AddDate = new DateTime(2023, 12, 22, 8, 30, 28),
-                    SerialNumber = "nc8cqfhd9q",
-                    Status = ItemStatus.Used,
-                    Type = ItemType.Keyboard,
-                    OwnerId = 2,
-                    OwnerName = "User #2",
-                    BrandId = 2,
-                    BrandName = "Brand #2",
-                    DeskId = 1,
-                    DeskName = "Desk #1",
-                },new Item()
-                {
-                    Id = 4,
-                    Name = "Mouse #4",
-                    AddDate = new DateTime(2023, 12, 21, 5, 10, 20),
-                    SerialNumber = "abc123def456",
-                    Status = ItemStatus.Free,
-                    Type = ItemType.Mouse,
-                    OwnerId = 1,
-                    OwnerName = "User #1",
-                    BrandId = 1,
-                    BrandName = "Brand #1",
-                    DeskId = null,
-                    DeskName = null,
-                },
-                new Item()
-                {
-                    Id = 5,
-                    Name = "Mouse #5",
-                    AddDate = new DateTime(2023, 12, 22, 6, 30, 28),
-                    SerialNumber = "m8c32nac09c",
-                    Status = ItemStatus.Used,
-                    Type = ItemType.Mouse,
-                    OwnerId = 2,
-                    OwnerName = "User #2",
-                    BrandId = 2,
-                    BrandName = "Brand #2",
-                    DeskId = 1,
-                    DeskName = "Desk #1",
-                },
-                new Item()
-                {
-                    Id = 6,
-                    Name = "Keyboard #6",
-                    AddDate = new DateTime(2023, 12, 22, 8, 30, 28),
-                    SerialNumber = "nc8cqfhd9q",
-                    Status = ItemStatus.Used,
-                    Type = ItemType.Keyboard,
-                    OwnerId = 2,
-                    OwnerName = "User #2",
-                    BrandId = 2,
-                    BrandName = "Brand #2",
-                    DeskId = 1,
-                    DeskName = "Desk #1",
-                }
-            };
-
-            return _items;
+            return await GetEntityCollectionAsync(_itemEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Item>>);
         }
         public async Task<Item> GetItemByIdAsync(int id)
         {
-            await Task.Delay(500);
-            var _items = await GetItemsAsync();
-
-            return _items.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_itemEndpoint, id, JsonConvert.DeserializeObject<Item>);
         }
         public async Task<bool> AddItemAsync(AddItemDto addItemDto)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_itemEndpoint, addItemDto);
         }
         public async Task<bool> UpdateItemAsync(UpdateItemDto updateItemDto)
         {
-            await Task.Delay(1000);
-            return true;
+            return await UpdateEntityAsync(_itemEndpoint, updateItemDto);
         }
 
         #endregion
@@ -161,57 +62,19 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Building>> GetBuildingsAsync()
         {
-            await Task.Delay(300);
-
-            var _buildings = new ObservableCollection<Building>
-            {
-                new Building
-                {
-                    Id = 1,
-                    Name = "Building #1",
-                },
-                new Building
-                {
-                    Id = 2,
-                    Name = "Building #2",
-                },
-                new Building
-                {
-                    Id = 3,
-                    Name = "Building #3",
-                },
-                new Building
-                {
-                    Id = 4,
-                    Name = "Building #4",
-                },
-                new Building
-                {
-                    Id = 5,
-                    Name = "Building #5",
-                },
-            };
-
-            return _buildings;
+            return await GetEntityCollectionAsync(_buildingEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Building>>);
         }
         public async Task<Building> GetBuildingByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _building = await GetBuildingsAsync();
-
-            return _building.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_buildingEndpoint, id, JsonConvert.DeserializeObject<Building>);
         }
         public async Task<bool> AddBuildingAsync(AddBuildingDto building)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_buildingEndpoint, building);
         }
         public async Task<bool> UpdateBuildingAsync(Building building)
         {
-            await Task.Delay(300);
-
-            return true;
+            return await UpdateEntityAsync(_buildingEndpoint, building);
         }
 
         #endregion
@@ -220,104 +83,19 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Brand>> GetBrandsAsync()
         {
-            try
-            {
-                var response = await _httpClient.GetAsync($"{_apiUrl}/{_brandEndpoint}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var brands = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(content);
-
-                    return brands;
-                }
-                else
-                {
-                    return new ObservableCollection<Brand>();
-                }
-            }
-            catch(Exception ex)
-            {
-                return new ObservableCollection<Brand>();
-            }
+            return await GetEntityCollectionAsync(_brandEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Brand>>);
         }
         public async Task<Brand> GetBrandByIdAsync(int id)
         {
-            try
-            {
-                var response = await _httpClient.GetAsync($"{_apiUrl}/{_brandEndpoint}/{id}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<Brand>(content);
-
-                    if (result is not null)
-                    {
-                        return result;
-                    }
-
-                }
-
-                return null;
-
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            return await GetEntityByIdAsync(_brandEndpoint, id, JsonConvert.DeserializeObject<Brand>);
         }
         public async Task<bool> AddBrandAsync(AddBrandDto brand)
         {
-            try
-            {
-                var response = await _httpClient.PostAsJsonAsync($"{_apiUrl}/{_brandEndpoint}", brand);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<Brand>(content);
-
-                    if(brand.Name == result.Name)
-                    {
-                        return true;
-                    }
-
-                }
-                
-                 return false;
-                
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return await AddEntityAsync(_brandEndpoint, brand);
         }
         public async Task<bool> UpdateBrandAsync(Brand brand)
         {
-            try
-            {
-                var response = await _httpClient.PutAsJsonAsync($"{_apiUrl}/{_brandEndpoint}", brand);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<Brand>(content);
-
-                    if (brand.Id == result.Id)
-                    {
-                        return true;
-                    }
-
-                }
-
-                return false;
-
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return await UpdateEntityAsync(_brandEndpoint, brand);
         }
 
         #endregion
@@ -347,191 +125,23 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Desk>> GetDesksAsync()
         {
-            await Task.Delay(500);
-
-            var _desks = new ObservableCollection<Desk>()
-            {
-                new Desk()
-                {
-                    Id = 1,
-                    Name = "Desk #1",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 2,
-                    Name = "Desk #2",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 3,
-                    Name = "Desk #3",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 4,
-                    Name = "Desk #4",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 5,
-                    Name = "Desk #5",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 6,
-                    Name = "Desk #6",
-                    RoomId = 2,
-                    RoomName = "Room #2",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 7,
-                    Name = "Desk #7",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 8,
-                    Name = "Desk #8",
-                    RoomId = 3,
-                    RoomName = "Room #3",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 9,
-                    Name = "Desk #9",
-                    RoomId = 3,
-                    RoomName = "Room #3",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 11,
-                    Name = "Desk #11",
-                    RoomId = 3, 
-                    RoomName = "Room #3",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 35,
-                    Name = "Desk #35",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 2,
-                    StatusName = "Broken"
-                },
-                new Desk()
-                {
-                    Id = 36,
-                    Name = "Desk #36",
-                    RoomId = 2,
-                    RoomName = "Room #2",
-                    StatusId = 1,
-                    StatusName = "Working"
-                },
-                new Desk()
-                {
-                    Id = 37,
-                    Name = "Desk #37",
-                    RoomId = 1,
-                    RoomName = "Room #1",
-                    StatusId = 2,
-                    StatusName = "Broken"
-                },
-            };
-            return _desks;
+            return await GetEntityCollectionAsync(_deskEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Desk>>);
         }
         public async Task<ObservableCollection<DeskBasicInfoDto>> GetDesksBasicInfoAsync()
-        {   
-            await Task.Delay(1000);
-            var _desks = new ObservableCollection<DeskBasicInfoDto>()
-            {
-                new DeskBasicInfoDto
-                {
-                    Id = 1,
-                    Name = "Desk #1"
-                },
-                new DeskBasicInfoDto
-                {
-                    Id = 2,
-                    Name = "Desk #2"
-                },
-                new DeskBasicInfoDto
-                {
-                    Id = 3,
-                    Name = "Desk #3"
-                },
-                new DeskBasicInfoDto
-                {
-                    Id = 4,
-                    Name = "Desk #4"
-                },
-                new DeskBasicInfoDto
-                {
-                    Id = 5,
-                    Name = "Desk #5"
-                },
-                new DeskBasicInfoDto
-                {
-                    Id = 6,
-                    Name = "Desk #6"
-                },
-                new DeskBasicInfoDto
-                {
-                    Id = 7,
-                    Name = "Desk #7"
-                }
-            };
-
-            return _desks;
+        {
+            return await GetEntityCollectionAsync($"{_deskEndpoint}/basic", JsonConvert.DeserializeObject<ObservableCollection<DeskBasicInfoDto>>);
         }
         public async Task<Desk> GetDeskByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _desks = await GetDesksAsync();
-
-            return _desks.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_deskEndpoint, id, JsonConvert.DeserializeObject<Desk>);
         }
         public async Task<bool> AddDeskAsync(AddDeskDto desk)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_deskEndpoint, desk);
         }
         public async Task<bool> UpdateDeskAsync(UpdateDeskDto desk)
         {
-            await Task.Delay(1000);
-            return true;
+            return await UpdateEntityAsync(_deskEndpoint, desk);
         }
 
         #endregion
@@ -540,99 +150,24 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Floor>> GetFloorsAsync()
         {
-            await Task.Delay(500);
-
-            var _floors = new ObservableCollection<Floor>()
-            {
-                new Floor()
-                {
-                    Id = 1,
-                    Name = "Floor #1",
-                    BuildingId = 1,
-                    BuildingName = "Building #1",
-                },
-                new Floor()
-                {
-                    Id = 2,
-                    Name = "Floor #2",
-                    BuildingId = 1,
-                    BuildingName = "Building #1",
-                },
-                new Floor()
-                {
-                    Id = 3,
-                    Name = "Floor #3",
-                    BuildingId = 2,
-                    BuildingName = "Building #2",
-                },
-                new Floor()
-                {
-                    Id = 4,
-                    Name = "Floor #4",
-                    BuildingId = 3,
-                    BuildingName = "Building #3",
-                },
-                new Floor()
-                {
-                    Id = 5,
-                    Name = "Floor #5",
-                    BuildingId = 1,
-                    BuildingName = "Building #1",
-                },
-            };
-            return _floors;
+            return await GetEntityCollectionAsync(_floorEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Floor>>);
         }
         public async Task<ObservableCollection<FloorBasicInfoDto>> GetFloorBasicInfoAsync()
         {
-            await Task.Delay(500);
+            return await GetEntityCollectionAsync($"{_floorEndpoint}/basic", JsonConvert.DeserializeObject<ObservableCollection<FloorBasicInfoDto>>);
 
-            var _floors = new ObservableCollection<FloorBasicInfoDto>()
-            {
-                new FloorBasicInfoDto()
-                {
-                    Id = 1,
-                    Name = "Floor #1",
-                },
-                new FloorBasicInfoDto()
-                {
-                    Id = 2,
-                    Name = "Floor #2",
-                },
-                new FloorBasicInfoDto()
-                {
-                    Id = 3,
-                    Name = "Floor #3",
-                },
-                new FloorBasicInfoDto()
-                {
-                    Id = 4,
-                    Name = "Floor #4",
-                },
-                new FloorBasicInfoDto()
-                {
-                    Id = 5,
-                    Name = "Floor #5",
-                },
-            };
-            return _floors;
         }
         public async Task<Floor> GetFloorByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _floors = await GetFloorsAsync();
-
-            return _floors.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_floorEndpoint, id, JsonConvert.DeserializeObject<Floor>);
         }
         public async Task<bool> AddFloorAsync(AddFloorDto floor)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_floorEndpoint, floor);
         }
         public async Task<bool> UpdateFloorAsync(UpdateFloorDto floor)
         {
-            await Task.Delay(1000);
-            return true;
+            return await UpdateEntityAsync(_floorEndpoint, floor);
         }
 
         #endregion
@@ -641,114 +176,23 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Room>> GetRoomsAsync()
         {
-            await Task.Delay(500);
-
-            var _rooms = new ObservableCollection<Room>()
-            {
-                new Room()
-                {
-                    Id = 1,
-                    Name = "Room #1",
-                    FloorId = 1,
-                    FloorName = "Floor #1"
-                },
-                new Room()
-                {
-                    Id = 2,
-                    Name = "Room #2",
-                    FloorId = 1,
-                    FloorName = "Floor #1"
-                },
-                new Room()
-                {
-                    Id = 3,
-                    Name = "Room #3",
-                    FloorId = 1,
-                    FloorName = "Floor #1"
-                },
-                new Room()
-                {
-                    Id = 4,
-                    Name = "Room #4",
-                    FloorId = 1,
-                    FloorName = "Floor #1"
-                },
-                new Room()
-                {
-                    Id = 5,
-                    Name = "Room #5",
-                    FloorId = 2,
-                    FloorName = "Floor #2"
-                },
-                new Room()
-                {
-                    Id = 6,
-                    Name = "Room #6",
-                    FloorId = 2,
-                    FloorName = "Floor #2"
-                },
-
-            };
-            return _rooms;
+            return await GetEntityCollectionAsync(_roomEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Room>>);
         }
         public async Task<ObservableCollection<RoomBasicInfoDto>> GetRoomsBasicInfoAsync()
         {
-            await Task.Delay(300);
-
-            var _rooms = new ObservableCollection<RoomBasicInfoDto>()
-            {
-                new RoomBasicInfoDto
-                {
-                    Id = 1,
-                    Name = "Room #1"
-                },
-                new RoomBasicInfoDto
-                {
-                    Id = 2,
-                    Name = "Room #2"
-                },
-                new RoomBasicInfoDto
-                {
-                    Id = 3,
-                    Name = "Room #3"
-                },
-                new RoomBasicInfoDto
-                {
-                    Id = 4,
-                    Name = "Room #4"
-                },
-                new RoomBasicInfoDto
-                {
-                    Id = 5,
-                    Name = "Room #5"
-                },
-                new RoomBasicInfoDto
-                {
-                    Id = 6,
-                    Name = "Room #6"
-                }
-            };
-
-            return _rooms;
+            return await GetEntityCollectionAsync($"{_roomEndpoint}/basic", JsonConvert.DeserializeObject<ObservableCollection<RoomBasicInfoDto>>);
         }
         public async Task<Room> GetRoomByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _rooms = await GetRoomsAsync();
-
-            return _rooms.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_roomEndpoint, id, JsonConvert.DeserializeObject<Room>);
         }
         public async Task<bool> AddRoomAsync(AddRoomDto room)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_roomEndpoint, room);
         }
-
         public async Task<bool> UpdateDeskAsync(UpdateRoomDto room)
         {
-            await Task.Delay(1000);
-            return true;
+            return await UpdateEntityAsync(_roomEndpoint, room);
         }
 
         #endregion
@@ -756,111 +200,23 @@ namespace WPFDeskManager.Data
         #region User Methods
         public async Task<ObservableCollection<User>> GetUsersAsync()
         {
-            await Task.Delay(500);
-
-            var _users = new ObservableCollection<User>()
-            {
-                new User()
-                {
-                    Id = 1,
-                    FirstName = "fn #1",
-                    LastName = "ln #1",
-                    Login = "Login #1",
-                    RoleId = Role.User,
-                    TeamId = 1,
-                    TeamName = "Team #1",
-                },
-                new User()
-                {
-                    Id = 2,
-                    FirstName = "fn #2",
-                    LastName = "ln #2",
-                    Login = "Login #2",
-                    RoleId = Role.User,
-                    TeamId = 1,
-                    TeamName = "Team #1",
-                },
-                new User()
-                {
-                    Id = 3,
-                    FirstName = "fn #3",
-                    LastName = "ln #3",
-                    Login = "Login #3",
-                    RoleId = Role.User,
-                    TeamId = 1,
-                    TeamName = "Team #1",
-                },
-                new User()
-                {
-                    Id = 4,
-                    FirstName = "fn #4",
-                    LastName = "ln #4",
-                    Login = "Login #4",
-                    RoleId = Role.User,
-                    TeamId = 2,
-                    TeamName = "Team #2",
-                },
-                new User()
-                {
-                    Id = 5,
-                    FirstName = "fn #5",
-                    LastName = "ln #5",
-                    Login = "Login #5",
-                    RoleId = Role.User,
-                    TeamId = 2,
-                    TeamName = "Team #2",
-                },
-
-            };
-            return _users;
+            return await GetEntityCollectionAsync(_userEndpoint, JsonConvert.DeserializeObject<ObservableCollection<User>>);
         }
         public async Task<ObservableCollection<UserBasicInfoDto>> GetUsersBasicInfoAsync()
         {
-            await Task.Delay(1000);
-            var _users = new ObservableCollection<UserBasicInfoDto>()
-            {
-                new UserBasicInfoDto
-                {
-                    Id = 1,
-                    Name = "User #1"
-                },
-                new UserBasicInfoDto
-                {
-                    Id = 2,
-                    Name = "User #2"
-                },
-                new UserBasicInfoDto
-                {
-                    Id = 3,
-                    Name = "User #3"
-                },
-                new UserBasicInfoDto
-                {
-                    Id = 4,
-                    Name = "User #4"
-                },
-
-            };
-
-            return _users;
+            return await GetEntityCollectionAsync($"{_userEndpoint}/basic", JsonConvert.DeserializeObject<ObservableCollection<UserBasicInfoDto>>);
         }
         public async Task<User> GetUserByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _users = await GetUsersAsync();
-
-            return _users.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_userEndpoint, id, JsonConvert.DeserializeObject<User>);
         }
         public async Task<bool> AddUserAsync(AddUserDto user)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_userEndpoint, user);
         }
         public async Task<bool> UpdateUserAsync(UpdateUserDto user)
         {
-            await Task.Delay(1000);
-            return true;
+            return await UpdateEntityAsync(_userEndpoint, user);
         }
 
         #endregion
@@ -869,76 +225,69 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Team>> GetTeamsAsync()
         {
-            await Task.Delay(1000);
-            var _teams = new ObservableCollection<Team>()
-            {
-                new Team
-                {
-                    Id = 1,
-                    Name = "Team #1"
-                },
-                new Team
-                {
-                    Id = 2,
-                    Name = "Team #2"
-                },
-                new Team
-                {
-                    Id = 3,
-                    Name = "Team #3"
-                },
-                new Team
-                {
-                    Id = 4,
-                    Name = "Team #4"
-                },
-
-            };
-
-            return _teams;
+            return await GetEntityCollectionAsync(_teamEndpoint, JsonConvert.DeserializeObject<ObservableCollection<Team>>);
         }
         public async Task<Team> GetTeamByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _teams = await GetTeamsAsync();
-
-            return _teams.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_teamEndpoint, id, JsonConvert.DeserializeObject<Team>);
         }
         public async Task<bool> AddTeamAsync(AddTeamDto team)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_teamEndpoint, team);
         }
         public async Task<bool> UpdateTeamAsync(Team team)
         {
-            await Task.Delay(300);
-
-            return true;
+            return await UpdateEntityAsync(_teamEndpoint, team);
         }
 
         #endregion
 
+        #region Delete Method
+
         public async Task<bool> DeleteEntity(int id, EntityType type)
         {
-            await Task.Delay(300);
+            string endpoint = "";
             switch (type)
             {
                 case EntityType.Building:
+                    endpoint = _buildingEndpoint; 
+                    break;
+                case EntityType.Brand:
+                    endpoint = _brandEndpoint;
+                    break;
                 case EntityType.Desk:
+                    endpoint = _deskEndpoint;
+                    break;
                 case EntityType.DeskStatus:
+                    endpoint = _deskStatusEndpoint;
+                    break;
                 case EntityType.Floor:
+                    endpoint = _floorEndpoint;
+                    break;
                 case EntityType.Room:
+                    endpoint = _roomEndpoint;
+                    break;
                 case EntityType.User:
+                    endpoint = _userEndpoint;
+                    break;
                 case EntityType.Item:
+                    endpoint = _itemEndpoint;
+                    break;
                 case EntityType.Team:
-                    return true;
+                    endpoint = _teamEndpoint;
+                    break;
 
-                case EntityType.Unknown:
-                    return false;
-                default: return false;
+                default: break;
             }
+
+            if (endpoint.Length > 0) 
+            {
+                return await DeleteEntityAsync(endpoint, id);
+            }
+            return false;
         }
+
+        #endregion
 
         #region Private Methods
 
@@ -1011,6 +360,25 @@ namespace WPFDeskManager.Data
             try
             {
                 var response = await _httpClient.PutAsJsonAsync($"{_apiUrl}/{endpointName}", entity);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                return default;
+
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        private async Task<bool> DeleteEntityAsync(string endpointName, int id)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"{_apiUrl}/{endpointName}/{id}");
 
                 if (response.IsSuccessStatusCode)
                 {
