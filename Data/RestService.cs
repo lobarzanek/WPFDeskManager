@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
@@ -21,6 +22,14 @@ namespace WPFDeskManager.Data
     {
         private const string _apiUrl = "https://localhost:7115/api";
         private const string _brandEndpoint = "Brand";
+        private const string _buildingEndpoint = "Building";
+        private const string _deskEndpoint = "Desk";
+        private const string _deskStatusEndpoint = "DeskStatus";
+        private const string _floorEndpoint = "Floor";
+        private const string _ItemEndpoint = "Item";
+        private const string _RoomEndpoint = "Room";
+        private const string _TeamEndpoint = "Team";
+        private const string _UserEndpoint = "User";
         private readonly HttpClient _httpClient;
 
         public RestService()
@@ -317,42 +326,19 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<DeskStatus>> GetDeskStatusesAsync()
         {
-            await Task.Delay(300);
-
-            var _statuses = new ObservableCollection<DeskStatus>()
-            {
-                new DeskStatus
-                {
-                    Id = 1,
-                    Name = "Working"
-                },
-                new DeskStatus
-                {
-                    Id = 2,
-                    Name = "Broken"
-                }
-            };
-
-            return _statuses;
+            return await GetEntityCollectionAsync(_deskStatusEndpoint, JsonConvert.DeserializeObject<ObservableCollection<DeskStatus>>);
         }
         public async Task<DeskStatus> GetDeskStatusByIdAsync(int id)
         {
-            await Task.Delay(300);
-
-            var _statuses = await GetDeskStatusesAsync();
-
-            return _statuses.Where(e => e.Id == id).FirstOrDefault();
+            return await GetEntityByIdAsync(_deskStatusEndpoint, id, JsonConvert.DeserializeObject<DeskStatus>);
         }
         public async Task<bool> AddDeskStatusAsync(AddDeskStatusDto status)
         {
-            await Task.Delay(2000);
-            return true;
+            return await AddEntityAsync(_deskStatusEndpoint, status);
         }
         public async Task<bool> UpdateDeskStatusAsync(DeskStatus status)
         {
-            await Task.Delay(300);
-
-            return true;
+            return await UpdateEntityAsync(_deskStatusEndpoint, status);
         }
 
         #endregion
@@ -953,5 +939,93 @@ namespace WPFDeskManager.Data
                 default: return false;
             }
         }
+
+        #region Private Methods
+
+        private async Task<IEnumerable> GetEntityCollectionAsync<IEnumerable>(string endpointName, Func<string, IEnumerable> deserialize)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{_apiUrl}/{endpointName}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = deserialize(content);
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+            return default;
+        }
+        private async Task<T> GetEntityByIdAsync<T>(string endpointName, int id, Func<string, T> deserialize)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{_apiUrl}/{endpointName}/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = deserialize(content);
+
+                    if (result is not null)
+                    {
+                        return result;
+                    }
+                }
+
+                return default;
+
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        private async Task<bool> AddEntityAsync<T>(string endpointName, T entity)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync($"{_apiUrl}/{endpointName}", entity);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                return default;
+
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        private async Task<bool> UpdateEntityAsync<T>(string endpointName, T entity)
+        {
+            try
+            {
+                var response = await _httpClient.PutAsJsonAsync($"{_apiUrl}/{endpointName}", entity);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                return default;
+
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+
+        #endregion
     }
 }
