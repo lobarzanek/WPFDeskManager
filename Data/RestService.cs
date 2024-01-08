@@ -1,22 +1,31 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using WPFDeskManager.Models;
 using WPFDeskManager.Models.DTO;
 using WPFDeskManager.Utilities;
+using WPFDeskManager.Views;
 
 namespace WPFDeskManager.Data
 {
     public class RestService
     {
+        private const string _apiUrl = "https://localhost:7115/api";
+        private const string _brandEndpoint = "Brand";
+        private readonly HttpClient _httpClient;
+
         public RestService()
         {
-
+            _httpClient= new HttpClient();
         }
 
         #region Item Methods
@@ -202,52 +211,104 @@ namespace WPFDeskManager.Data
 
         public async Task<ObservableCollection<Brand>> GetBrandsAsync()
         {
-            await Task.Delay(1000);
-            var _brands = new ObservableCollection<Brand>()
+            try
             {
-                new Brand
-                {
-                    Id = 1,
-                    Name = "Brand #1"
-                },
-                new Brand
-                {
-                    Id = 2,
-                    Name = "Brand #2"
-                },
-                new Brand
-                {
-                    Id = 3,
-                    Name = "Brand #3"
-                },
-                new Brand
-                {
-                    Id = 4,
-                    Name = "Brand #4"
-                },
+                var response = await _httpClient.GetAsync($"{_apiUrl}/{_brandEndpoint}");
 
-            };
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var brands = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(content);
 
-            return _brands;
+                    return brands;
+                }
+                else
+                {
+                    return new ObservableCollection<Brand>();
+                }
+            }
+            catch(Exception ex)
+            {
+                return new ObservableCollection<Brand>();
+            }
         }
         public async Task<Brand> GetBrandByIdAsync(int id)
         {
-            await Task.Delay(300);
+            try
+            {
+                var response = await _httpClient.GetAsync($"{_apiUrl}/{_brandEndpoint}/{id}");
 
-            var _brand = await GetBrandsAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<Brand>(content);
 
-            return _brand.Where(e => e.Id == id).FirstOrDefault();
+                    if (result is not null)
+                    {
+                        return result;
+                    }
+
+                }
+
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         public async Task<bool> AddBrandAsync(AddBrandDto brand)
         {
-            await Task.Delay(2000);
-            return true;
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync($"{_apiUrl}/{_brandEndpoint}", brand);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<Brand>(content);
+
+                    if(brand.Name == result.Name)
+                    {
+                        return true;
+                    }
+
+                }
+                
+                 return false;
+                
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
         public async Task<bool> UpdateBrandAsync(Brand brand)
         {
-            await Task.Delay(300);
+            try
+            {
+                var response = await _httpClient.PutAsJsonAsync($"{_apiUrl}/{_brandEndpoint}", brand);
 
-            return true;
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<Brand>(content);
+
+                    if (brand.Id == result.Id)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         #endregion
