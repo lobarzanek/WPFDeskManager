@@ -481,7 +481,7 @@ namespace WPFDeskManager.Data
             await Task.Delay(2000);
             return true;
         }
-        public async Task<bool> UpdateDeskAsync(Desk desk)
+        public async Task<bool> UpdateDeskAsync(UpdateDeskDto desk)
         {
             await Task.Delay(1000);
             return true;

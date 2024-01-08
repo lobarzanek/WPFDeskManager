@@ -100,12 +100,10 @@ namespace WPFDeskManager.ViewModels
 
         private void ChangeSelectedRoom()
         {
-            AddDeskDto.RoomName = SelectedRoom.Name;
             AddDeskDto.RoomId = SelectedRoom.Id;            
         }
         private void ChangeSelectedStatus()
         {
-            AddDeskDto.StatusName = SelectedStatus.Name;
             AddDeskDto.StatusId = SelectedStatus.Id;
         }
 

@@ -21,19 +21,9 @@ namespace WPFDeskManager.Models
         public int? RoomId { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of room name.
-        /// </summary>
-        public string? RoomName { get; set; }
-
-        /// <summary>
         /// Gets or sets the value of status ID.
         /// </summary>
         public int? StatusId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of status name.
-        /// </summary>
-        public string? StatusName { get; set; }
 
         #endregion
     }

@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 using System.Windows;
 using WPFDeskManager.Data;
 using WPFDeskManager.Models;
+using WPFDeskManager.Models.DTO;
 using WPFDeskManager.Utilities.Base;
 
 namespace WPFDeskManager.ViewModels
 {
     public class EditDeskVM : EntityWindowBase
     {
-        private Desk _desk = new Desk();
-        private ObservableCollection<RoomBasicInfoDto> _rooms = new ObservableCollection<RoomBasicInfoDto>();
-        private ObservableCollection<DeskStatus> _statuses = new ObservableCollection<DeskStatus>();
-        private RoomBasicInfoDto _selectedRoom = new RoomBasicInfoDto();
-        private DeskStatus _selectedStatus = new DeskStatus();
+        private UpdateDeskDto _desk = new();
+        private ObservableCollection<RoomBasicInfoDto> _rooms = new();
+        private ObservableCollection<DeskStatus> _statuses = new();
+        private RoomBasicInfoDto _selectedRoom = new();
+        private DeskStatus _selectedStatus = new();
 
-        public Desk Desk
+        public UpdateDeskDto Desk
         {
             get { return _desk; }
             set { _desk = value; OnPropertyChanged(); }
@@ -59,7 +60,22 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                Desk = await _restService.GetDeskByIdAsync(StaticData.CurrentEntityId);
+                var result = await _restService.GetDeskByIdAsync(StaticData.CurrentEntityId);
+
+                if(result != null)
+                {
+                    Desk = new UpdateDeskDto
+                    {
+                        Id = result.Id,
+                        Name = result.Name,
+                        MapXLocation = result.MapXLocation,
+                        MapYLocation = result.MapYLocation,
+                        Width = result.Width,
+                        Height = result.Height,
+                        RoomId = result.RoomId,
+                        StatusId = result.StatusId,
+                    };
+                }
 
                 Statuses = await _restService.GetDeskStatusesAsync();
                 Rooms = await _restService.GetRoomsBasicInfoAsync();
@@ -126,7 +142,6 @@ namespace WPFDeskManager.ViewModels
                 return;
             }
 
-            Desk.RoomName = SelectedRoom.Name;
             Desk.RoomId = SelectedRoom.Id;
         }
         private void ChangeSelectedStatus()
@@ -136,7 +151,6 @@ namespace WPFDeskManager.ViewModels
                 return;
             }
 
-            Desk.StatusName = SelectedStatus.Name;
             Desk.StatusId = SelectedStatus.Id;
         }
     }
