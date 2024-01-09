@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFDeskManager.Data;
 using WPFDeskManager.Models;
 using WPFDeskManager.Utilities.Base;
 
@@ -31,7 +32,7 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                Desk = await _restService.GetDeskByIdAsync(EntityId);
+                Desk = await _restService.GetDeskByIdAsync(StaticData.CurrentEntityId);
             }
             catch (Exception ex)
             {

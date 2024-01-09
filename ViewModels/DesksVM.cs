@@ -57,11 +57,9 @@ namespace WPFDeskManager.ViewModels
 
         public override void ShowCommandExecute(object parameter)
         {
-            ShowDeskVM showDeskVM = new ShowDeskVM();
-            showDeskVM.EntityId = (int)parameter;
+            StaticData.CurrentEntityId = (int)parameter;
 
             ShowDesk showDeskWindow = new ShowDesk();
-            showDeskWindow.DataContext = showDeskVM;
             showDeskWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             showDeskWindow.Show();
         }
