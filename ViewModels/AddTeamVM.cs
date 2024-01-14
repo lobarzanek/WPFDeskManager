@@ -20,6 +20,7 @@ namespace WPFDeskManager.ViewModels
         }
         public override void SetWindowData()
         {
+            Team = new AddTeamDto();
             EntityButtonContent = "Dodaj";
         }
 
@@ -47,6 +48,11 @@ namespace WPFDeskManager.ViewModels
                 if (result)
                 {
                     MessageBox.Show("Added");
+                }
+                else
+                {
+                    this.IsLoading = false;
+                    MessageBox.Show("Error");
                 }
             }
         }
