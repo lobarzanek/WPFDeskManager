@@ -85,7 +85,6 @@ namespace WPFDeskManager.ViewModels
         private void Home(object obj) => CurrentView = new HomeVM();
         private void Items(object obj) => CurrentView = new ItemsVM();
         private void Desks(object obj) => CurrentView = new DesksVM();
-        private void DeskStatus(object obj) => CurrentView = new DeskStatusesVM();
         private void Floors(object obj) => CurrentView = new FloorsVM();
         private void Buildings(object obj) => CurrentView = new BuildingsVM();
         private void Users(object obj) => CurrentView = new UsersVM();
@@ -97,7 +96,6 @@ namespace WPFDeskManager.ViewModels
             HomeCommand = new RelayCommand(Home);
             ItemsCommand = new RelayCommand(Items);
             DesksCommand = new RelayCommand(Desks);
-            DesksStatusCommand = new RelayCommand(DeskStatus);
             FloorsCommand = new RelayCommand(Floors);
             BuildingsCommand = new RelayCommand(Buildings);
             UsersCommand = new RelayCommand(Users);
@@ -112,7 +110,6 @@ namespace WPFDeskManager.ViewModels
             HomeButtonContent = "HOME";
             ItemsButtonContent = "WYPOSAŻENIE";
             DesksButtonContent = "BIURKA";
-            DeskStatusButtonContent = "STATUSY BIUREK";
             FloorsButtonContent = "PIĘTRA";
             BuildingsButtonContent = "BUDYNKI";
             UsersButtonContent = "UŻYTKOWNICY";

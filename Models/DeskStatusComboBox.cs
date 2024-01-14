@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFDeskManager.Models
 {
-    public class DeskStatus
+    public class DeskStatusComboBox
     {
         #region Properties and indexers
 
@@ -19,6 +19,11 @@ namespace WPFDeskManager.Models
         /// Gets or sets the name value of Desk Status.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DeskStatus value.
+        /// </summary>
+        public DeskStatus DeskStatus { get; set; }
 
         #endregion
     }

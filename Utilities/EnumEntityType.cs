@@ -12,7 +12,6 @@ namespace WPFDeskManager.Utilities
         Building,
         Brand,
         Desk,
-        DeskStatus,
         Floor,
         Item,
         Room,

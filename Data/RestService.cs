@@ -24,7 +24,6 @@ namespace WPFDeskManager.Data
         private const string _brandEndpoint = "Brand";
         private const string _buildingEndpoint = "Building";
         private const string _deskEndpoint = "Desk";
-        private const string _deskStatusEndpoint = "DeskStatus";
         private const string _floorEndpoint = "Floor";
         private const string _itemEndpoint = "Item";
         private const string _roomEndpoint = "Room";
@@ -96,27 +95,6 @@ namespace WPFDeskManager.Data
         public async Task<bool> UpdateBrandAsync(Brand brand)
         {
             return await UpdateEntityAsync(_brandEndpoint, brand);
-        }
-
-        #endregion
-
-        #region Desk Status Methods
-
-        public async Task<ObservableCollection<DeskStatus>> GetDeskStatusesAsync()
-        {
-            return await GetEntityCollectionAsync(_deskStatusEndpoint, JsonConvert.DeserializeObject<ObservableCollection<DeskStatus>>);
-        }
-        public async Task<DeskStatus> GetDeskStatusByIdAsync(int id)
-        {
-            return await GetEntityByIdAsync(_deskStatusEndpoint, id, JsonConvert.DeserializeObject<DeskStatus>);
-        }
-        public async Task<bool> AddDeskStatusAsync(AddDeskStatusDto status)
-        {
-            return await AddEntityAsync(_deskStatusEndpoint, status);
-        }
-        public async Task<bool> UpdateDeskStatusAsync(DeskStatus status)
-        {
-            return await UpdateEntityAsync(_deskStatusEndpoint, status);
         }
 
         #endregion
@@ -257,9 +235,6 @@ namespace WPFDeskManager.Data
                     break;
                 case EntityType.Desk:
                     endpoint = _deskEndpoint;
-                    break;
-                case EntityType.DeskStatus:
-                    endpoint = _deskStatusEndpoint;
                     break;
                 case EntityType.Floor:
                     endpoint = _floorEndpoint;

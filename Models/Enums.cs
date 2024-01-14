@@ -49,4 +49,13 @@ namespace WPFDeskManager.Models
         Blocked = 4,
         Done = 5
     }
+
+    /// <summary>
+    /// Value of the desk status.
+    /// </summary>
+    public enum DeskStatus
+    {
+        Free = 0,
+        Broken = 2,
+    }
 }

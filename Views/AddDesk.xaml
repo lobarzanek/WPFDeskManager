@@ -8,7 +8,7 @@
         xmlns:u="clr-namespace:WPFDeskManager.Utilities" 
         xmlns:uc="clr-namespace:WPFDeskManager.Utilities.Converters"
         mc:Ignorable="d"
-        Title="Add desk" Height="600" Width="450">
+        Title="Add desk" Height="450" Width="450">
 
     <Window.DataContext>
         <vm:AddDeskVM/>
@@ -77,20 +77,6 @@
                 Style="{StaticResource EntityWindowComboBox}"
                 ItemsSource="{Binding Rooms}"
                 SelectedItem="{Binding SelectedRoom, Mode=TwoWay}"
-                />
-
-            <Label 
-                Grid.Row="3"
-                Grid.Column="0"
-                Style="{StaticResource EntityWindowDescriptionLabel}"
-                Content="Status :"/>
-
-            <ComboBox
-                Grid.Row="3"
-                Grid.Column="1"
-                Style="{StaticResource EntityWindowComboBox}"
-                ItemsSource="{Binding Statuses}"
-                SelectedItem="{Binding SelectedStatus, Mode=TwoWay}"
                 />
 
             <Button 

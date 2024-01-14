@@ -63,6 +63,28 @@ namespace WPFDeskManager.Data
                 };
             }
         }
+
+        public static ObservableCollection<DeskStatusComboBox> DeskStatuses
+        {
+            get
+            {
+                return new ObservableCollection<DeskStatusComboBox>
+                {
+                    new DeskStatusComboBox
+                    {
+                        Id= 0,
+                        Name = "Free",
+                        DeskStatus = DeskStatus.Free
+                    },
+                    new DeskStatusComboBox
+                    {
+                        Id= 2,
+                        Name = "Broken",
+                        DeskStatus = DeskStatus.Broken
+                    },
+                };
+            }
+        }
         public static int CurrentEntityId { get; set; }
     }
 }

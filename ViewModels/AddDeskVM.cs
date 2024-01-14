@@ -19,9 +19,7 @@ namespace WPFDeskManager.ViewModels
     {
         private AddDeskDto _addDeskDto;
         private ObservableCollection<RoomBasicInfoDto> _rooms;
-        private ObservableCollection<DeskStatus> _statuses;
         private RoomBasicInfoDto _selectedRoom;
-        private DeskStatus _selectedStatus;
 
         public AddDeskDto AddDeskDto
         {
@@ -33,21 +31,10 @@ namespace WPFDeskManager.ViewModels
             get { return _rooms; }
             set { _rooms = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<DeskStatus> Statuses
-        {
-            get { return _statuses; }
-            set { _statuses = value; OnPropertyChanged(); }
-        }
         public RoomBasicInfoDto SelectedRoom
         {
             get { return _selectedRoom; }
             set { _selectedRoom = value; ChangeSelectedRoom();}
-        }
-
-        public DeskStatus SelectedStatus
-        {
-            get { return _selectedStatus; }
-            set { _selectedStatus = value; ChangeSelectedStatus(); }
         }
 
         public override void SetWindowData()
@@ -62,7 +49,6 @@ namespace WPFDeskManager.ViewModels
 
             try
             {
-                Statuses = await _restService.GetDeskStatusesAsync();
                 Rooms = await _restService.GetRoomsBasicInfoAsync();
             }
             catch (Exception ex)
@@ -94,7 +80,7 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                MessageBox.Show($"{AddDeskDto.Name}, {AddDeskDto.RoomId}, {AddDeskDto.StatusId}");
+                MessageBox.Show($"{AddDeskDto.Name}, {AddDeskDto.RoomId}");
             }
         }
 
@@ -102,11 +88,6 @@ namespace WPFDeskManager.ViewModels
         {
             AddDeskDto.RoomId = SelectedRoom.Id;            
         }
-        private void ChangeSelectedStatus()
-        {
-            AddDeskDto.StatusId = SelectedStatus.Id;
-        }
-
 
     }
 }

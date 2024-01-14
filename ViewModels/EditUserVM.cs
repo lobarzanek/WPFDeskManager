@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFDeskManager.Data;
 using WPFDeskManager.Models;
 using WPFDeskManager.Models.DTO;
@@ -83,6 +84,32 @@ namespace WPFDeskManager.ViewModels
             {
                 this.IsLoading = false;
                 SetCheckboxData();
+            }
+        }
+
+        public override void EntityButtonMethod(object obj)
+        {
+            EditUserAsync(obj);
+        }
+
+        private async Task EditUserAsync(object obj)
+        {
+
+            this.IsLoading = true;
+
+            try
+            {
+                await _restService.UpdateUserAsync(User);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                this.IsLoading = false;
+                CloseButtonMethod(obj);
+                MessageBox.Show($"Updated");
             }
         }
         private void SetCheckboxData()

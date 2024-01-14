@@ -20,11 +20,6 @@ namespace WPFDeskManager.Models
         /// </summary>
         public int? RoomId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the value of status ID.
-        /// </summary>
-        public int? StatusId { get; set; }
-
         #endregion
     }
 }

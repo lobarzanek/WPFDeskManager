@@ -54,7 +54,7 @@
                 IsReadOnly="True"/>
                     <DataGridTextColumn Binding ="{Binding Name}" Header="Nazwa" Width="*" IsReadOnly="True"/>
                     <DataGridTextColumn Binding ="{Binding RoomName}" Header="Pokój" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding ="{Binding StatusName}" Header="Status" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding ="{Binding Status}" Header="Status" Width="*" IsReadOnly="True"/>
                     <DataGridTemplateColumn Header="" Width="Auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

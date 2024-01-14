@@ -16,9 +16,9 @@ namespace WPFDeskManager.ViewModels
     {
         private UpdateDeskDto _desk = new();
         private ObservableCollection<RoomBasicInfoDto> _rooms = new();
-        private ObservableCollection<DeskStatus> _statuses = new();
+        private ObservableCollection<DeskStatusComboBox> _statuses = StaticData.DeskStatuses;
         private RoomBasicInfoDto _selectedRoom = new();
-        private DeskStatus _selectedStatus = new();
+        private DeskStatusComboBox _selectedStatus = new();
 
         public UpdateDeskDto Desk
         {
@@ -30,7 +30,7 @@ namespace WPFDeskManager.ViewModels
             get { return _rooms; }
             set { _rooms = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<DeskStatus> Statuses
+        public ObservableCollection<DeskStatusComboBox> Statuses
         {
             get { return _statuses; }
             set { _statuses = value; OnPropertyChanged(); }
@@ -41,7 +41,7 @@ namespace WPFDeskManager.ViewModels
             set { _selectedRoom = value; ChangeSelectedRoom(); OnPropertyChanged(); }
         }
 
-        public DeskStatus SelectedStatus
+        public DeskStatusComboBox SelectedStatus
         {
             get { return _selectedStatus; }
             set { _selectedStatus = value; ChangeSelectedStatus(); OnPropertyChanged(); }
@@ -73,11 +73,10 @@ namespace WPFDeskManager.ViewModels
                         Width = result.Width,
                         Height = result.Height,
                         RoomId = result.RoomId,
-                        StatusId = result.StatusId,
+                        Status = result.Status,
                     };
                 }
 
-                Statuses = await _restService.GetDeskStatusesAsync();
                 Rooms = await _restService.GetRoomsBasicInfoAsync();
             }
             catch (Exception ex)
@@ -111,7 +110,7 @@ namespace WPFDeskManager.ViewModels
             {
                 this.IsLoading = false;
                 CloseButtonMethod(obj);
-                MessageBox.Show($"{Desk.Name}, {Desk.RoomId}, {Desk.StatusId}");
+                MessageBox.Show($"{Desk.Name}, {Desk.RoomId}, {Desk.Status}");
             }
         }
         
@@ -121,11 +120,11 @@ namespace WPFDeskManager.ViewModels
             {
                 return;
             }
-            var status = Statuses.Where(s => s.Id == Desk.StatusId).FirstOrDefault();
+            var status = StaticData.DeskStatuses.Where(s => s.DeskStatus == Desk.Status).FirstOrDefault();
 
             if (status != null)
             {
-                SelectedStatus = new DeskStatus { Id = status.Id, Name = status.Name };
+                SelectedStatus = new DeskStatusComboBox { Id = status.Id, Name = status.Name, DeskStatus = status.DeskStatus };
             }
 
             var room = Rooms.Where(r => r.Id == Desk.RoomId).FirstOrDefault();
@@ -151,7 +150,7 @@ namespace WPFDeskManager.ViewModels
                 return;
             }
 
-            Desk.StatusId = SelectedStatus.Id;
+            Desk.Status = SelectedStatus.DeskStatus;
         }
     }
 }
