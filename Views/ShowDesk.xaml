@@ -50,8 +50,6 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                
                 <RowDefinition/>
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
@@ -168,30 +166,17 @@
                 Grid.Row="9"
                 Grid.Column="0"
                 Style="{StaticResource EntityWindowDescriptionLabel}"
-                Content="Status ID :"/>
+                Content="Status :"/>
 
             <Label
                 Grid.Row="9"
                 Grid.Column="1"
                 Style="{StaticResource EntityWindowValueLabel}"
-                Content="{Binding Desk.StatusId}" 
-                />
-
-            <Label 
-                Grid.Row="10"
-                Grid.Column="0"
-                Style="{StaticResource EntityWindowDescriptionLabel}"
-                Content="Status name :"/>
-
-            <Label
-                Grid.Row="10"
-                Grid.Column="1"
-                Style="{StaticResource EntityWindowValueLabel}"
-                Content="{Binding Desk.StatusName}" 
+                Content="{Binding Desk.Status}" 
                 />
 
             <Button 
-                Grid.Row="12"
+                Grid.Row="11"
                 Grid.ColumnSpan="2"
                 Content="{Binding EntityButtonContent}" 
                 Style="{StaticResource EntityWindowButton}" 
