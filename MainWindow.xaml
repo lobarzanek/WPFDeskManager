@@ -86,8 +86,8 @@
                 </Menu:Btn>
 
                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                    Command="{Binding DesksStatusCommand}">
-                    <Label Content="{Binding DeskStatusButtonContent}"
+                    Command="{Binding RoomsCommand}">
+                    <Label Content="{Binding RoomsButtonContent}"
                         Style="{StaticResource MenuBtnText}" />
                 </Menu:Btn>
 

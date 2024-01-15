@@ -168,7 +168,7 @@ namespace WPFDeskManager.Data
         {
             return await AddEntityAsync(_roomEndpoint, room);
         }
-        public async Task<bool> UpdateDeskAsync(UpdateRoomDto room)
+        public async Task<bool> UpdateRoomAsync(UpdateRoomDto room)
         {
             return await UpdateEntityAsync(_roomEndpoint, room);
         }

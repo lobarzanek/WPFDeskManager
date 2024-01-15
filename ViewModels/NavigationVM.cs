@@ -14,7 +14,7 @@ namespace WPFDeskManager.ViewModels
         private string _homeButtonContent;
         private string _itemsButtonContent;
         private string _desksButtonContent;
-        private string _desksStatusButtonContent;
+        private string _roomsButtonContent;
         private string _floorsButtonContent;
         private string _buildingsButtonContent;
         private string _usersButtonContent;
@@ -42,10 +42,10 @@ namespace WPFDeskManager.ViewModels
             get { return _desksButtonContent; }
             set { _desksButtonContent = value; OnPropertyChanged(); }
         }
-        public string DeskStatusButtonContent
+        public string RoomsButtonContent
         {
-            get { return _desksStatusButtonContent; }
-            set { _desksStatusButtonContent = value; OnPropertyChanged(); }
+            get { return _roomsButtonContent; }
+            set { _roomsButtonContent = value; OnPropertyChanged(); }
         }
         public string FloorsButtonContent
         {
@@ -75,7 +75,7 @@ namespace WPFDeskManager.ViewModels
         public ICommand HomeCommand { get; set; }
         public ICommand ItemsCommand { get; set; }
         public ICommand DesksCommand { get; set; }
-        public ICommand DesksStatusCommand { get; set; }
+        public ICommand RoomsCommand { get; set; }
         public ICommand FloorsCommand { get; set; }
         public ICommand BuildingsCommand { get; set; }
         public ICommand UsersCommand { get; set; }
@@ -85,6 +85,7 @@ namespace WPFDeskManager.ViewModels
         private void Home(object obj) => CurrentView = new HomeVM();
         private void Items(object obj) => CurrentView = new ItemsVM();
         private void Desks(object obj) => CurrentView = new DesksVM();
+        private void Rooms(object obj) => CurrentView = new RoomsVM();
         private void Floors(object obj) => CurrentView = new FloorsVM();
         private void Buildings(object obj) => CurrentView = new BuildingsVM();
         private void Users(object obj) => CurrentView = new UsersVM();
@@ -96,6 +97,7 @@ namespace WPFDeskManager.ViewModels
             HomeCommand = new RelayCommand(Home);
             ItemsCommand = new RelayCommand(Items);
             DesksCommand = new RelayCommand(Desks);
+            RoomsCommand = new RelayCommand(Rooms);
             FloorsCommand = new RelayCommand(Floors);
             BuildingsCommand = new RelayCommand(Buildings);
             UsersCommand = new RelayCommand(Users);
@@ -110,6 +112,7 @@ namespace WPFDeskManager.ViewModels
             HomeButtonContent = "HOME";
             ItemsButtonContent = "WYPOSAŻENIE";
             DesksButtonContent = "BIURKA";
+            RoomsButtonContent = "POKOJE";
             FloorsButtonContent = "PIĘTRA";
             BuildingsButtonContent = "BUDYNKI";
             UsersButtonContent = "UŻYTKOWNICY";

@@ -24,6 +24,10 @@
         <view:Desks />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:RoomsVM}">
+        <view:Rooms />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:FloorsVM}">
         <view:Floors />
     </DataTemplate>

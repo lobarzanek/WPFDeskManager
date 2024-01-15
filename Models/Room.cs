@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFDeskManager.Models.DTO
+namespace WPFDeskManager.Models
 {
     public class Room
     {
