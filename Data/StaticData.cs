@@ -39,6 +39,12 @@ namespace WPFDeskManager.Data
                         Name = "Monitor",
                         ItemType = ItemType.Monitor
                     },
+                    new ItemTypeComboBox
+                    {
+                        Id= 4,
+                        Name = "Stacja Dokująca",
+                        ItemType = ItemType.DockStation
+                    },
                 };
             }
         }

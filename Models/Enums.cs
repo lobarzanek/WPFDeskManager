@@ -24,6 +24,7 @@ namespace WPFDeskManager.Models
         Mouse = 1,
         Keyboard = 2,
         Monitor = 3,
+        DockStation = 4,
     }
 
     /// <summary>
