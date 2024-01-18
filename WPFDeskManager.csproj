@@ -8,10 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\DeleteButton.png" />
-    <None Remove="Assets\EditButton.png" />
-    <None Remove="Assets\Loading.png" />
-    <None Remove="Assets\ShowButton.png" />
+    <None Remove="Assets\Images\DeleteButton.png" />
+    <None Remove="Assets\Images\EditButton.png" />
+    <None Remove="Assets\Images\logo.png" />
+    <None Remove="Assets\Images\Loading.png" />
+    <None Remove="Assets\Images\ShowButton.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,13 +23,13 @@
     <Resource Include="Assets\Images\Loading.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Assets\Images\DeleteButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\EditButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\ShowButton.png">

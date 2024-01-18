@@ -7,14 +7,37 @@
              xmlns:u="clr-namespace:WPFDeskManager.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="643" d:DesignWidth="810">
-    
+
     <UserControl.DataContext>
         <vm:HomeVM/>
     </UserControl.DataContext>
-    
+
     <Grid>
 
-        <Label Content="Home"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="411*"/>
+        </Grid.RowDefinitions>
+
+        <Label 
+            Content="Biurkomat" 
+            Padding="20" 
+            Grid.Row="0" 
+            HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Bottom" 
+            FontSize="48" 
+            FontStyle="Italic" 
+            FontWeight="Bold">
+            <Label.Foreground>
+                <SolidColorBrush Color="{DynamicResource BGSideBarColor}"/>
+            </Label.Foreground>
+        </Label>
+        <Image 
+            Source="/Assets/Images/logo.png" 
+            Stretch="None" 
+            Grid.Row="1" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"/>
 
     </Grid>
 </UserControl>
