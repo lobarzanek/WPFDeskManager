@@ -15,27 +15,27 @@ namespace WPFDeskManager.Models.DTO
         /// <summary>
         /// Gets or sets the name value of room.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the value of map view box.
         /// </summary>
-        public string? mapViewBox { get; set; }
+        public string mapViewBox { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the value of map width.
         /// </summary>
-        public string? mapWidth { get; set; }
+        public string mapWidth { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the value of map height.
         /// </summary>
-        public string? mapHeight { get; set; }
+        public string mapHeight { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the value of xmlns.
         /// </summary>
-        public string? mapXmlns { get; set; }
+        public string mapXmlns { get; set; } = "http://www.w3.org/2000/svg";
 
         /// <summary>
         /// Gets or sets the value of floor ID.

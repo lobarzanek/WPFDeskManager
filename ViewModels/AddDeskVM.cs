@@ -68,10 +68,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task AddDeskAsync()
         {
+            bool result = false;
+
             try
             {
                 this.IsLoading = true;
-                await Task.Delay(2000);                
+                result = await _restService.AddDeskAsync(AddDeskDto);
             }
             catch (Exception ex)
             {
@@ -80,7 +82,14 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                MessageBox.Show($"{AddDeskDto.Name}, {AddDeskDto.RoomId}");
+                if (result)
+                {
+                    MessageBox.Show("Added");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
 

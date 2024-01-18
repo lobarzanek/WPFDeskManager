@@ -94,12 +94,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditUserAsync(object obj)
         {
-
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateUserAsync(User);
+                result = await _restService.UpdateUserAsync(User);
             }
             catch (Exception ex)
             {
@@ -108,8 +108,16 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"Updated");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
             }
         }
         private void SetCheckboxData()

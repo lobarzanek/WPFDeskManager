@@ -56,12 +56,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditTeamAsync(object obj)
         {
-
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateTeamAsync(Team);
+                result = await _restService.UpdateTeamAsync(Team);
             }
             catch (Exception ex)
             {
@@ -70,8 +70,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Team.Id} | {Team.Name}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
     }

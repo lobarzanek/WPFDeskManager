@@ -57,12 +57,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditBuildingAsync(object obj)
         {
-
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateBuildingAsync(Building);
+                result = await _restService.UpdateBuildingAsync(Building);
             }
             catch (Exception ex)
             {
@@ -71,8 +71,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Building.Id} | {Building.Name}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
     }

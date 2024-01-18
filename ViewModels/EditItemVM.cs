@@ -126,12 +126,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditItemAsync(object obj)
         {
-            
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateItemAsync(Item);
+               result = await _restService.UpdateItemAsync(Item);
             }
             catch (Exception ex)
             {
@@ -140,8 +140,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Item.Id} | {Item.Name} | {Item.OwnerId} | {Item.BrandId} | {Item.DeskId} | {Item.Type}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
         private void SetCheckboxData()

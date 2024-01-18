@@ -97,10 +97,11 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditDeskAsync(object obj)
         {
+            bool result = false;
             try
             {
                 this.IsLoading = true;
-                await _restService.UpdateDeskAsync(Desk);
+                result = await _restService.UpdateDeskAsync(Desk);
             }
             catch (Exception ex)
             {
@@ -109,8 +110,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Desk.Name}, {Desk.RoomId}, {Desk.Status}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
         

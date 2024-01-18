@@ -87,12 +87,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditFloorAsync(object obj)
         {
-
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateFloorAsync(Floor);
+                result = await _restService.UpdateFloorAsync(Floor);
             }
             catch (Exception ex)
             {
@@ -101,8 +101,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Floor.Id} | {Floor.Name} | {Floor.BuildingId}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
         private void SetCheckboxData()

@@ -57,12 +57,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditBrandAsync(object obj)
         {
-
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateBrandAsync(Brand);
+                result = await _restService.UpdateBrandAsync(Brand);
             }
             catch (Exception ex)
             {
@@ -71,8 +71,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Brand.Id} | {Brand.Name}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
     }

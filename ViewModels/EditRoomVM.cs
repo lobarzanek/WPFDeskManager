@@ -56,6 +56,10 @@ namespace WPFDeskManager.ViewModels
                         Id = result.Id,
                         Name = result.Name,
                         FloorId = result.FloorId,
+                        mapViewBox = result.mapViewBox,
+                        mapHeight = result.mapHeight,
+                        mapWidth = result.mapWidth,
+                        mapXmlns = result.mapXmlns
                     };
                 }
 
@@ -80,12 +84,12 @@ namespace WPFDeskManager.ViewModels
 
         private async Task EditRoomAsync(object obj)
         {
-
+            bool result = false;
             this.IsLoading = true;
 
             try
             {
-                await _restService.UpdateRoomAsync(Room);
+                result = await _restService.UpdateRoomAsync(Room);
             }
             catch (Exception ex)
             {
@@ -94,8 +98,15 @@ namespace WPFDeskManager.ViewModels
             finally
             {
                 this.IsLoading = false;
-                CloseButtonMethod(obj);
-                MessageBox.Show($"{Room.Id} | {Room.Name} | {Room.FloorId}");
+                if (result)
+                {
+                    MessageBox.Show("Updated");
+                    CloseButtonMethod(obj);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
 

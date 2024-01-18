@@ -87,10 +87,14 @@ namespace WPFDeskManager.ViewModels
             }
             finally
             {
-                this.IsLoading = !result;
+                this.IsLoading = false;
                 if (result)
                 {
                     MessageBox.Show("Added");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
                 }
             }
         }
